@@ -12,7 +12,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "./.bin/mocha -R spec test"
+    "test": "./node_modules/.bin/mocha -R spec test"
   },
   "keywords": [
     "coverage",
