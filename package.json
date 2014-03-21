@@ -11,10 +11,14 @@
     "mkdirp": "~0.3.5",
     "columnify": "~0.1.2"
   },
+  "repository": "https://github.com/cgiffard/SteamShovel.git",
   "devDependencies": {},
   "scripts": {
     "test": "./node_modules/.bin/mocha -R spec test",
     "coverage": "./lib/cli.js lib lib-cov && ./node_modules/.bin/mocha -R $(pwd)/lib/reporter.js && rm -rf lib-cov"
+  },
+  "bin": {
+    "shovel": "lib/cli.js"
   },
   "keywords": [
     "coverage",
