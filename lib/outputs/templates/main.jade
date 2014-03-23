@@ -1,0 +1,10 @@
+pre
+	-codeMap.forEach(function(item) {
+		-if (!item.close && !item.open)
+			span.token=item
+		-else
+			-if (item.open)
+				| <span class="item #{item.open.type} #{item.open.results.length ? "evaluated" : "unevaluated"}">
+			-if (item.close)
+				| </span>
+	-});
