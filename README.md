@@ -64,3 +64,6 @@ you might want to record! The sky is the limit.
 Because SteamShovel records so much more from your code, it does have a
 considerable performance impact. However, the accuracy of your test coverage
 data should be more important than how quickly it runs.
+
+Also, (if you couldn't tell already!) SteamShovel is early in its development.
+Be careful: there will be bugs.
