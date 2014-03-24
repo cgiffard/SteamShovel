@@ -1,10 +1,75 @@
-pre
-	-codeMap.forEach(function(item) {
-		-if (!item.close && !item.open)
-			span.token=item
-		-else
-			-if (item.open)
-				| <span class="item #{item.open.type} #{item.open.results.length ? "evaluated" : "unevaluated"}">
-			-if (item.close)
-				| </span>
-	-});
+mixin stats(data)
+	table.statRundown
+		thead: tr
+			th Kind
+			th Covered
+			th Total
+			th Percentage
+		tbody
+			each stats, statType in data
+				tr
+					th=statType
+					td=((stats.covered*100000)|0)/100000
+					td=stats.total
+					td=(((stats.percentage*1000)|0) / 1000) + "%"
+
+mixin file(file)
+	div.file(id=file.key)
+		header.fileHeader
+			h2=file.filename
+			+stats(file.stats)
+
+		pre
+			each item in file.codeMap
+				if (!item.close && !item.open)
+					if (item.match(/\s\s+/) || item.match(/\t/))
+						span.whitespace=item
+					else
+						span.token=item
+				else
+					if (item.open && item.open.results.length)
+						| <span
+						| 	class="item #{item.open.type}
+						|	evaluated depth#{item.open.depth}"
+						|	data-score="#{item.open.score}"
+						|	data-depth="#{item.open.depth}"
+						|	data-type="#{item.open.type}">
+					if (item.open && !item.open.results.length)
+						| <span
+						|	class="item #{item.open.type}
+						|	unevaluated">
+					if (item.close)
+						| </span>
+
+mixin sidebar(files)
+	aside.sidebar
+		nav: ul
+			each file, index in files
+				li.file: a(href="#"+file.key)=file.filename
+
+mixin main(files)
+	main
+		each file, key in files
+			+file(file)
+
+doctype html
+html(lang=en)
+	head
+		meta(charset="utf8")
+		style(type="text/css", media="screen")!= style
+
+	body
+		header.docHeader
+			h1 Coverage Report
+			+stats(stats)
+			.div#guide
+				h3 Key
+				p
+					| SteamShovel uses the stack depth to determine how directly
+					| code was tested. Code which was not tested directly is not
+					| considered highly in the coverage output.
+
+		+sidebar(files)
+		+main(files)
+
+		script!= script

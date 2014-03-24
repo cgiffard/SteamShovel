@@ -1,0 +1,152 @@
+html {
+	font-size: 66.67%;
+	font-family: sans-serif;
+	tab-size: 4;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	margin-right: 23vw;
+	line-height: 1.6;
+}
+
+aside {
+	position: fixed;
+	width: 20vw;
+	right: 0px;
+	top: 0px;
+	background-color: #EFEFEF;
+	height: 100vh;
+}
+
+aside ul, aside li {
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+aside a {
+	display: block;
+	line-height: 1.4;
+	font-size: 1.2em;
+	text-decoration: none;
+	border-bottom: solid #CCC 1px;
+	border-top: solid white 1px;
+	padding: 2em;
+	padding-top: 1em;
+	padding-bottom: 1em;
+
+	color: #666;
+}
+
+aside a:hover {
+	color: black;
+}
+
+header.docHeader {
+	padding: 2em;
+}
+
+div.file {
+	margin: 1em;
+	padding: 1em;
+	background-color: #F0F0F0;
+}
+
+div.file header {
+	border-bottom: dashed #CCC 1px;
+}
+
+pre {
+	background-color: white;
+	font-size: 1.2em;
+	font-family: Menlo, Consolas, Monaco, "Lucida Console", monospace;
+}
+
+table {
+	border-collapse: collapse;
+	margin-bottom: 1em;
+	margin-top: 1em;
+	color: #666;
+}
+
+th, td {
+	text-align: left;
+	min-width: 50px;
+	font-size: 1.1em;
+	line-height: 1.7em;
+	padding-right: 1em;
+}
+
+
+/* Tokens */
+.evaluated.perfect > .token, .key-item.perfect {
+	background-color: hsl(125, 100%, 70%);
+}
+
+.evaluated.great > .token, .key-item.great {
+	background-color: hsl(115, 100%, 70%);
+}
+
+.evaluated.good > .token, .key-item.good {
+	background-color: hsl(100, 100%, 70%);
+}
+
+.evaluated.average > .token, .key-item.average {
+	background-color: hsl(80, 100%, 70%);
+}
+
+.evaluated.poor > .token, .key-item.poor {
+	background-color: hsl(60, 100%, 70%);
+}
+
+.evaluated.worse > .token, .key-item.worse {
+	background-color: hsl(40, 100%, 70%);
+}
+
+.evaluated.abysmal > .token, .key-item.abysmal {
+	background-color: hsl(20, 100%, 70%);
+}
+
+.evaluated.nonexistent > .token, .key-item.nonexistent {
+	background-color: hsl(0, 100%, 70%);
+}
+
+.unevaluated, .key-item.unevaluated {
+	background-color: #CCC;
+	color: red;
+	font-weight: bold;
+}
+
+.AssignmentExpression > .token, .AssignmentExpression > * > .token {
+	border-bottom: solid #AAF 2px;
+}
+
+.CallExpression > .token, .CallExpression > * > .token {
+	border-bottom: solid #AFA 2px;
+}
+
+#guide {
+	display: block;
+	padding-top: 2em;
+	overflow: hidden;
+}
+
+#guide h3, #guide p {
+	clear: both;
+	margin-bottom: 0.5em;
+}
+
+#guide p {
+	font-size: 1.1em;
+}
+
+#guide .key-item {
+	display: block;
+	padding: 1em;
+	float: left;
+}

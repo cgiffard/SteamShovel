@@ -4,7 +4,7 @@ var chai = require("chai");
 path = global.__steamshovel ? "../lib-cov" : "../lib";
 
 describe("Instrumentor", function() {
-	var instrument = require(path + "/instrumentor");
+	var instrument = require(path).instrument;
 
 	it("should export a function", function() {
 		instrument.should.be.a("function");
@@ -105,7 +105,7 @@ describe("Instrumentor", function() {
 				code2 = "++ abc.def";
 
 			// Infix
-			
+
 			instrument(code, null, false)
 				.indexOf("abc.def++").should.be.greaterThan(-1);
 
