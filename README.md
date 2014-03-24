@@ -1,46 +1,66 @@
 SteamShovel
 ===========
 
-JS code coverage done right.
+JS code coverage done right. [Why?](#why)
 
-### Fast
+[![See an example report](https://files.app.net/2h8pnciKv.png)](https://files.app.net/2h8pgCkzG.html)
 
-```sh
-npm run-script coverage
-```
-
-### In detail
+### Get Started
 
 ```sh
-// Instrument code
-./lib/cli.js inDir outDir
 
-// Use the reporter with mocha
-mocha -R $(pwd)/reporter.js
+# install
+npm install -g steamshovel
+
+# instrument
+shovel mySourceDirectory myInstrumentedDirectory
+
+# introspect
+mocha -R steamshovel
+
 ```
 
-### Should I use it
+### Why Should You Use SteamShovel
 
-No.
+"But I like Blanket/Istanbul/JScover!" I hear you say. "Why should I move?"
 
-### Why
+That's a great question. It comes down to this:
 
-It doesn't work properly yet. But:
+**Your existing instrumentor is lying to you.**
 
-**Existing instrumentors don't record all the data they could.** There's so much
-there — timing, order, complexity, stack depth, environment data like memory or
-load — and yet, all they catch is whether the code ran or not.
+That's right. When you run your tests, and the coverage data is collected, the
+instrumentor only pays attention to whether a code branch was run... or wasn't.
+Unfortunately this is a gross oversimplification of how code is invoked by a
+test suite, and it will leave you with a false sense of security.
 
-This un-nuanced binary record isn't even useful for determining the coverage
-you've really got — a function being considered 'tested' only really counts if
-you're testing your code very directly, and you've got checks against its
-explicit behaviour — not if a function is being called ten deep, even if you've
-somehow managed to hit all its code paths. SteamShovel attempts to take that
-into account.
+The hypothesis behind SteamShovel is this:
 
-But I also want to:
-* Generate heatmaps to pinpoint hot code
-* Similarly, for slow code
-* Create an HTML UI for allowing you to step through the execution of your code,
-  expression by expression (a-la Bret Victor)
-* More, when I think of it.
+**Your unit tests should be run directly. Indirect invocation is probably
+unintentional, and that code shouldn't be considered tested.**
+
+In order to support this hypothesis, SteamShovel records the stack depth of the
+instrumentor at every invocation, and calculates the 'testedness' of a given
+branch by applying a weighted inverse logarithm to this depth.
+
+This gives you a **much more accurate** code coverage value. The variance in
+'coverage' as defined by SteamShovel and a conventional instrumentor like
+Istanbul can be as much as 50% — that's how much Istanbul is over-reporting.
+
+### What else?
+
+SteamShovel can do a whole lot more, too:
+
+* Profile timing, order, and stack depth
+* Record environment data like memory or load on a per-expression level
+* Save the result of every evaluation of every expression in your codebase, and
+  let you step through the results of your test run, interactively. (Coming
+  soon!)
+
+You can override the SteamShovel instrumentor with your own, and record anything
+you might want to record! The sky is the limit.
+
+### Caveat
+
+Because SteamShovel records so much more from your code, it does have a
+considerable performance impact. However, the accuracy of your test coverage
+data should be more important than how quickly it runs.
