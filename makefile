@@ -15,7 +15,7 @@ report: instrument
 # File away the report html
 file: report
 	mkdir -p ./reports
-	mv report.html "./reports/$(shell date).html"
+	cp report.html "./reports/$(shell date).html"
 
 # Restore the lib folder to its original location
 clean: restore
