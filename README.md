@@ -67,3 +67,14 @@ data should be more important than how quickly it runs.
 
 Also, (if you couldn't tell already!) SteamShovel is early in its development.
 Be careful: there will be bugs.
+
+### Todo
+
+* Stats generation needs to be a lot more abstract, and a lot faster. Look
+  forward to a huge amount of progress in this area!
+* Stats should also allow arbitrary queries to be developed against the data
+  which could be defined by a model and included in the template.
+* Consider monkey-patching require to auto-instrument code as it is loaded.
+* Gotta make things even easier to use!
+* More info in the default HTML output.
+* Memory usage and timing output as CSV & JSON!
