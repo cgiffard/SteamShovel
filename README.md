@@ -3,7 +3,7 @@ SteamShovel
 
 JS code coverage done right. [Why?](#why)
 
-[![See an example report](https://files.app.net/2h8pnciKv.png)](https://files.app.net/2h8pgCkzG.html)
+[![See an example report](https://files.app.net/2h8pnciKv.png)](http://rawgithub.com/cgiffard/SteamShovel/master/report.html)
 
 ### Get Started
 
