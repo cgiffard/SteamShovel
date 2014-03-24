@@ -1,7 +1,7 @@
 SteamShovel
 ===========
 
-JS code coverage done right. [Why?](#why)
+JS code coverage done right. [Why?](#why-should-you-use-steamshovel)
 
 [![See an example report](https://files.app.net/2h8pnciKv.png)](http://rawgithub.com/cgiffard/SteamShovel/master/report.html)
 
