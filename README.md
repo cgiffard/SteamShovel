@@ -35,7 +35,7 @@ test suite, and it will leave you with a false sense of security.
 
 The hypothesis behind SteamShovel is this:
 
-**Your unit tests should be run directly. Indirect invocation is probably
+**Your unit tests should run your code directly. Indirect invocation is probably
 unintentional, and that code shouldn't be considered tested.**
 
 In order to support this hypothesis, SteamShovel records the stack depth of the
