@@ -51,7 +51,9 @@ Istanbul can be as much as 50% — that's how much Istanbul is over-reporting.
 SteamShovel can do a whole lot more, too:
 
 * Profile timing, order, and stack depth
-* Record environment data like memory or load on a per-expression level
+* Record environment data like memory or load on a per-expression level (set the
+  environment variable `REPORTER_OUTPUT` to `csv` and you'll get an expression
+  level dump of timing and memory data!
 * Save the result of every evaluation of every expression in your codebase, and
   let you step through the results of your test run, interactively. (Coming
   soon!)
@@ -62,6 +64,11 @@ SteamShovel can do a whole lot more, too:
 
 You can override the SteamShovel instrumentor with your own, and record anything
 you might want to record! The sky is the limit.
+
+![SteamShovel's exported memory data from a test run](https://files.app.net/2p54lXIXq.png)
+
+**Seen here: SteamShovel's recorded memory data from a test run, visualised in,
+uh... Numbers.app**
 
 ### Caveat
 

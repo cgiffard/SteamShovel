@@ -4,7 +4,7 @@ var chai = require("chai");
 path = global.__steamshovel ? "../lib-cov" : "../lib";
 
 describe("Instrumentor", function() {
-	var instrument = require(path).instrument;
+	var instrument = require(path + "/instrumentor");
 
 	it("should export a function", function() {
 		instrument.should.be.a("function");

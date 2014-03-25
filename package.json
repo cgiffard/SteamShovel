@@ -1,6 +1,6 @@
 {
   "name": "steamshovel",
-  "version": "0.0.8",
+  "version": "0.0.7",
   "description": "Code Coverage Done Right!",
   "main": "lib/index.js",
   "dependencies": {
@@ -16,7 +16,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "./node_modules/.bin/mocha -R spec test",
-    "coverage": "./lib/cli.js lib lib-cov && ./node_modules/.bin/mocha -R $(pwd)/lib/reporter.js && rm -rf lib-cov"
+    "coverage": "make coverage"
   },
   "bin": {
     "shovel": "lib/cli.js"
