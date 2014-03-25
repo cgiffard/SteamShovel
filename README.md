@@ -55,6 +55,10 @@ SteamShovel can do a whole lot more, too:
 * Save the result of every evaluation of every expression in your codebase, and
   let you step through the results of your test run, interactively. (Coming
   soon!)
+* SteamShovel can now auto-instrument your code as you require it! Simply set
+  the `AUTO_INSTRUMENT` environment variable to `true` before running the
+  SteamShovel reporter. Remember that this won't instrument code that isn't
+  required, so 
 
 You can override the SteamShovel instrumentor with your own, and record anything
 you might want to record! The sky is the limit.
@@ -74,7 +78,6 @@ Be careful: there will be bugs.
   forward to a huge amount of progress in this area!
 * Stats should also allow arbitrary queries to be developed against the data
   which could be defined by a model and included in the template.
-* Consider monkey-patching require to auto-instrument code as it is loaded.
 * Gotta make things even easier to use!
 * More info in the default HTML output.
 * Memory usage and timing output as CSV & JSON!
