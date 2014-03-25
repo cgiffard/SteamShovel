@@ -48,7 +48,11 @@ mixin sidebar(files)
 	aside.sidebar
 		nav: ul
 			each file, index in files
-				li.file: a(href="#"+file.key)=file.filename
+				- var expressions = file.stats.expressions;
+				li(class="file", data-coverage=expressions.percentage)
+					a(href="#"+file.key)
+						span.coverage= expressions.percentage|0
+						span.filename!= file.filename.replace(/\//ig,"/&shy;")
 
 mixin main(files)
 	main
@@ -62,17 +66,21 @@ html(lang=en)
 		style(type="text/css", media="screen")!= style
 
 	body
-		header.docHeader
-			h1 Coverage Report
-			+stats(stats)
-			.div#guide
-				h3 Key
-				p
-					| SteamShovel uses the stack depth to determine how directly
-					| code was tested. Code which was not tested directly is not
-					| considered highly in the coverage output.
-
 		+sidebar(files)
-		+main(files)
+
+		div.body
+			header.docHeader
+				h1 Coverage Report
+				+stats(stats)
+				div#guide
+					h3 Key
+					p
+						| SteamShovel uses the stack depth to determine how
+						| directly code was tested. Code which was not tested
+						| directly is not considered highly in the coverage
+						| output.
+			+main(files)
 
 		script!= script
+
+

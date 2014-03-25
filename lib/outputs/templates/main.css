@@ -7,20 +7,39 @@ html {
 * {
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
-	margin-right: 23vw;
+	margin-right: 28vw;
 	line-height: 1.6;
+}
+
+div.body {
+	height: 100vh;
+	overflow: hidden;
+	overflow-y: scroll;
+}
+
+h1 {
+	font-size: 4em;
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font-weight: 100;
+	padding-bottom: 0.4em;
+	border-bottom: solid #CCC 1px;
+	margin-bottom: 0.4em;
+	color: #555;
 }
 
 aside {
 	position: fixed;
-	width: 20vw;
+	width: 28vw;
 	right: 0px;
 	top: 0px;
-	background-color: #EFEFEF;
+	background-color: #333;
 	height: 100vh;
+	box-shadow: rgba(0,0,0,0.5) -1px 0px 0px;
+	overflow-y: scroll;
 }
 
 aside ul, aside li {
@@ -29,23 +48,116 @@ aside ul, aside li {
 	margin: 0px;
 }
 
+aside li {
+	box-shadow: inset rgba(0,0,0,0.5) 1px 0px 0px;
+}
+
 aside a {
 	display: block;
 	line-height: 1.4;
 	font-size: 1.2em;
 	text-decoration: none;
-	border-bottom: solid #CCC 1px;
-	border-top: solid white 1px;
-	padding: 2em;
+	border-bottom: solid #222 1px;
+	border-top: solid #444 1px;
+	border-left: solid 3px black;
+	padding: 2.5em;
 	padding-top: 1em;
 	padding-bottom: 1em;
-
+	overflow: hidden;
 	color: #666;
+	position: relative;
 }
 
 aside a:hover {
-	color: black;
+	color: white;
+	background-color: #363636;
 }
+
+aside a {
+	text-overflow: break-word;
+}
+
+aside a span.coverage {
+	background-color: #2e2e2e;
+	border-right: solid #3a3a3a 1px;
+	color: black;
+	display: inline-block;
+	font-weight: bold;
+	min-width: 2em;
+	padding: 0.3em;
+	text-align: center;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+}
+
+aside li.perfect a {
+	border-left-color: hsl(125, 100%, 70%);
+}
+
+aside li.great a {
+	border-left-color: hsl(115, 100%, 70%);
+}
+
+aside li.good a {
+	border-left-color: hsl(100, 100%, 70%);
+}
+
+aside li.average a {
+	border-left-color: hsl(80, 100%, 70%);
+}
+
+aside li.poor a {
+	border-left-color: hsl(60, 100%, 70%);
+}
+
+aside li.worse a {
+	border-left-color: hsl(40, 100%, 70%);
+}
+
+aside li.abysmal a {
+	border-left-color: hsl(20, 100%, 70%);
+}
+
+aside li.you-should-be-ashamed a {
+	border-left-color: hsl(0, 100%, 70%);
+}
+
+aside li.perfect span.coverage {
+	color: hsl(125, 100%, 70%);
+}
+
+aside li.great span.coverage {
+	color: hsl(115, 100%, 70%);
+}
+
+aside li.good span.coverage {
+	color: hsl(100, 100%, 70%);
+}
+
+aside li.average span.coverage {
+	color: hsl(80, 100%, 70%);
+}
+
+aside li.poor span.coverage {
+	color: hsl(60, 100%, 70%);
+}
+
+aside li.worse span.coverage {
+	color: hsl(40, 100%, 70%);
+}
+
+aside li.abysmal span.coverage {
+	color: hsl(20, 100%, 70%);
+}
+
+aside li.you-should-be-ashamed span.coverage {
+	color: hsl(0, 100%, 70%);
+}
+
 
 header.docHeader {
 	padding: 2em;
@@ -54,7 +166,7 @@ header.docHeader {
 div.file {
 	margin: 1em;
 	padding: 1em;
-	background-color: #F0F0F0;
+	background-color: #F6F6F6;
 }
 
 div.file header {
@@ -65,6 +177,7 @@ pre {
 	background-color: white;
 	font-size: 1.2em;
 	font-family: Menlo, Consolas, Monaco, "Lucida Console", monospace;
+	padding: 1em;
 }
 
 table {
@@ -82,6 +195,15 @@ th, td {
 	padding-right: 1em;
 }
 
+.token {
+	-webkit-transition: background-color linear 250ms;
+	transition: background-color linear 250ms;
+}
+
+li a {
+	-webkit-transition: border-color linear 250ms;
+	transition: border-color linear 250ms
+}
 
 /* Tokens */
 .evaluated.perfect > .token, .key-item.perfect {
@@ -131,8 +253,12 @@ th, td {
 }
 
 #guide {
-	display: block;
-	padding-top: 2em;
+	border: solid #ddd 1px;
+	margin: 0px;
+	margin-left: -1em;
+	margin-right: -1em;
+	padding: 1em;
+	border-radius: 4px;
 	overflow: hidden;
 }
 
@@ -149,4 +275,6 @@ th, td {
 	display: block;
 	padding: 1em;
 	float: left;
+	box-shadow:	inset rgba(0,0,0,0.2) 0px 1px 0px,
+				inset rgba(0,0,0,0.2) -1px -1px 0px;
 }

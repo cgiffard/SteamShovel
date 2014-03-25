@@ -7,20 +7,39 @@
 * {
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
-	margin-right: 23vw;
+	margin-right: 28vw;
 	line-height: 1.6;
+}
+
+div.body {
+	height: 100vh;
+	overflow: hidden;
+	overflow-y: scroll;
+}
+
+h1 {
+	font-size: 4em;
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font-weight: 100;
+	padding-bottom: 0.4em;
+	border-bottom: solid #CCC 1px;
+	margin-bottom: 0.4em;
+	color: #555;
 }
 
 aside {
 	position: fixed;
-	width: 20vw;
+	width: 28vw;
 	right: 0px;
 	top: 0px;
-	background-color: #EFEFEF;
+	background-color: #333;
 	height: 100vh;
+	box-shadow: rgba(0,0,0,0.5) -1px 0px 0px;
+	overflow-y: scroll;
 }
 
 aside ul, aside li {
@@ -29,23 +48,116 @@ aside ul, aside li {
 	margin: 0px;
 }
 
+aside li {
+	box-shadow: inset rgba(0,0,0,0.5) 1px 0px 0px;
+}
+
 aside a {
 	display: block;
 	line-height: 1.4;
 	font-size: 1.2em;
 	text-decoration: none;
-	border-bottom: solid #CCC 1px;
-	border-top: solid white 1px;
-	padding: 2em;
+	border-bottom: solid #222 1px;
+	border-top: solid #444 1px;
+	border-left: solid 3px black;
+	padding: 2.5em;
 	padding-top: 1em;
 	padding-bottom: 1em;
-
+	overflow: hidden;
 	color: #666;
+	position: relative;
 }
 
 aside a:hover {
-	color: black;
+	color: white;
+	background-color: #363636;
 }
+
+aside a {
+	text-overflow: break-word;
+}
+
+aside a span.coverage {
+	background-color: #2e2e2e;
+	border-right: solid #3a3a3a 1px;
+	color: black;
+	display: inline-block;
+	font-weight: bold;
+	min-width: 2em;
+	padding: 0.3em;
+	text-align: center;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+}
+
+aside li.perfect a {
+	border-left-color: hsl(125, 100%, 70%);
+}
+
+aside li.great a {
+	border-left-color: hsl(115, 100%, 70%);
+}
+
+aside li.good a {
+	border-left-color: hsl(100, 100%, 70%);
+}
+
+aside li.average a {
+	border-left-color: hsl(80, 100%, 70%);
+}
+
+aside li.poor a {
+	border-left-color: hsl(60, 100%, 70%);
+}
+
+aside li.worse a {
+	border-left-color: hsl(40, 100%, 70%);
+}
+
+aside li.abysmal a {
+	border-left-color: hsl(20, 100%, 70%);
+}
+
+aside li.you-should-be-ashamed a {
+	border-left-color: hsl(0, 100%, 70%);
+}
+
+aside li.perfect span.coverage {
+	color: hsl(125, 100%, 70%);
+}
+
+aside li.great span.coverage {
+	color: hsl(115, 100%, 70%);
+}
+
+aside li.good span.coverage {
+	color: hsl(100, 100%, 70%);
+}
+
+aside li.average span.coverage {
+	color: hsl(80, 100%, 70%);
+}
+
+aside li.poor span.coverage {
+	color: hsl(60, 100%, 70%);
+}
+
+aside li.worse span.coverage {
+	color: hsl(40, 100%, 70%);
+}
+
+aside li.abysmal span.coverage {
+	color: hsl(20, 100%, 70%);
+}
+
+aside li.you-should-be-ashamed span.coverage {
+	color: hsl(0, 100%, 70%);
+}
+
 
 header.docHeader {
 	padding: 2em;
@@ -54,7 +166,7 @@ header.docHeader {
 div.file {
 	margin: 1em;
 	padding: 1em;
-	background-color: #F0F0F0;
+	background-color: #F6F6F6;
 }
 
 div.file header {
@@ -65,6 +177,7 @@ pre {
 	background-color: white;
 	font-size: 1.2em;
 	font-family: Menlo, Consolas, Monaco, "Lucida Console", monospace;
+	padding: 1em;
 }
 
 table {
@@ -82,6 +195,15 @@ th, td {
 	padding-right: 1em;
 }
 
+.token {
+	-webkit-transition: background-color linear 250ms;
+	transition: background-color linear 250ms;
+}
+
+li a {
+	-webkit-transition: border-color linear 250ms;
+	transition: border-color linear 250ms
+}
 
 /* Tokens */
 .evaluated.perfect > .token, .key-item.perfect {
@@ -131,8 +253,12 @@ th, td {
 }
 
 #guide {
-	display: block;
-	padding-top: 2em;
+	border: solid #ddd 1px;
+	margin: 0px;
+	margin-left: -1em;
+	margin-right: -1em;
+	padding: 1em;
+	border-radius: 4px;
 	overflow: hidden;
 }
 
@@ -149,9 +275,12 @@ th, td {
 	display: block;
 	padding: 1em;
 	float: left;
-}</style></head><body><header class="docHeader"><h1>Coverage Report</h1><table class="statRundown"><thead><tr><th>Kind</th><th>Covered</th><th>Total</th><th>Percentage</th></tr></thead><tbody><tr><th>lines</th><td>147.48866</td><td>544</td><td>27.11%</td></tr><tr><th>conditions</th><td>97.03199</td><td>265</td><td>36.61%</td></tr><tr><th>expressions</th><td>303.88814</td><td>813</td><td>37.37%</td></tr><tr><th>functions</th><td>302.25751</td><td>721</td><td>41.92%</td></tr></tbody></table><div id="guide" class="div"><h3>Key</h3><p>SteamShovel uses the stack depth to determine how directly
-code was tested. Code which was not tested directly is not
-considered highly in the coverage output.</p></div></header><aside class="sidebar"><nav><ul><li class="file"><a href="#6d186b954a58d5bb740f73d84fe39073">lib/index.js</a></li><li class="file"><a href="#7744650016d52918f79696c96d468795">lib/reporter.js</a></li><li class="file"><a href="#350dc2d1484d879c7368edd018106fd4">lib/stats/index.js</a></li><li class="file"><a href="#4283e89b3baf979028afccb2c82cfaf3">lib/stats/basic.js</a></li><li class="file"><a href="#eec4706ee2dbc9bb8da0c5853f3cf7ad">lib/stats/utils.js</a></li><li class="file"><a href="#c7db2deba541272893290ef6a69a34ee">lib/instrumentor.js</a></li><li class="file"><a href="#9fd67206eee7d1e1ff188470142cb00f">lib/instrumentor-config.js</a></li><li class="file"><a href="#bdd0ef4c9ff8ae316997d80042bcc53d">lib/process.js</a></li></ul></nav></aside><main><div id="6d186b954a58d5bb740f73d84fe39073" class="file"><header class="fileHeader"><h2>lib/index.js</h2><table class="statRundown"><thead><tr><th>Kind</th><th>Covered</th><th>Total</th><th>Percentage</th></tr></thead><tbody><tr><th>lines</th><td>0.34359</td><td>6</td><td>5.72%</td></tr><tr><th>conditions</th><td>0</td><td>0</td><td>0%</td></tr><tr><th>expressions</th><td>1.03079</td><td>15</td><td>6.87%</td></tr><tr><th>functions</th><td>0</td><td>0</td><td>0%</td></tr></tbody></table></header><pre><span class="token">&quot;use</span><span class="token"> </span><span class="token">strict&quot;;</span><span class="whitespace">
+	box-shadow:	inset rgba(0,0,0,0.2) 0px 1px 0px,
+				inset rgba(0,0,0,0.2) -1px -1px 0px;
+}</style></head><body><aside class="sidebar"><nav><ul><li data-coverage='6.87' class="file"><a href="#6d186b954a58d5bb740f73d84fe39073"><span class="coverage">6</span><span class="filename">lib/&shy;index.js</span></a></li><li data-coverage='0.18' class="file"><a href="#7744650016d52918f79696c96d468795"><span class="coverage">0</span><span class="filename">lib/&shy;reporter.js</span></a></li><li data-coverage='0.3' class="file"><a href="#350dc2d1484d879c7368edd018106fd4"><span class="coverage">0</span><span class="filename">lib/&shy;stats/&shy;index.js</span></a></li><li data-coverage='63.12' class="file"><a href="#4283e89b3baf979028afccb2c82cfaf3"><span class="coverage">63</span><span class="filename">lib/&shy;stats/&shy;basic.js</span></a></li><li data-coverage='17.14' class="file"><a href="#eec4706ee2dbc9bb8da0c5853f3cf7ad"><span class="coverage">17</span><span class="filename">lib/&shy;stats/&shy;utils.js</span></a></li><li data-coverage='82.3' class="file"><a href="#c7db2deba541272893290ef6a69a34ee"><span class="coverage">82</span><span class="filename">lib/&shy;instrumentor.js</span></a></li><li data-coverage='0.3' class="file"><a href="#9fd67206eee7d1e1ff188470142cb00f"><span class="coverage">0</span><span class="filename">lib/&shy;instrumentor-config.js</span></a></li><li data-coverage='0.15' class="file"><a href="#bdd0ef4c9ff8ae316997d80042bcc53d"><span class="coverage">0</span><span class="filename">lib/&shy;process.js</span></a></li></ul></nav></aside><div class="body"><header class="docHeader"><h1>Coverage Report</h1><table class="statRundown"><thead><tr><th>Kind</th><th>Covered</th><th>Total</th><th>Percentage</th></tr></thead><tbody><tr><th>lines</th><td>147.48866</td><td>544</td><td>27.11%</td></tr><tr><th>conditions</th><td>97.03199</td><td>265</td><td>36.61%</td></tr><tr><th>expressions</th><td>303.88814</td><td>813</td><td>37.37%</td></tr><tr><th>functions</th><td>302.25751</td><td>721</td><td>41.92%</td></tr></tbody></table><div id="guide"><h3>Key</h3><p>SteamShovel uses the stack depth to determine how
+directly code was tested. Code which was not tested
+directly is not considered highly in the coverage
+output.</p></div></header><main><div id="6d186b954a58d5bb740f73d84fe39073" class="file"><header class="fileHeader"><h2>lib/index.js</h2><table class="statRundown"><thead><tr><th>Kind</th><th>Covered</th><th>Total</th><th>Percentage</th></tr></thead><tbody><tr><th>lines</th><td>0.34359</td><td>6</td><td>5.72%</td></tr><tr><th>conditions</th><td>0</td><td>0</td><td>0%</td></tr><tr><th>expressions</th><td>1.03079</td><td>15</td><td>6.87%</td></tr><tr><th>functions</th><td>0</td><td>0</td><td>0%</td></tr></tbody></table></header><pre><span class="token">&quot;use</span><span class="token"> </span><span class="token">strict&quot;;</span><span class="whitespace">
 
 </span><span class="token">//</span><span class="token"> </span><span class="token">Export</span><span class="token"> </span><span class="token">the</span><span class="token"> </span><span class="token">reporter</span><span class="token"> </span><span class="token">so</span><span class="token"> </span><span class="token">that</span><span class="token"> </span><span class="token">mocha</span><span class="token"> </span><span class="token">can</span><span class="token"> </span><span class="token">require</span><span class="token"> </span><span class="token">it</span><span class="token"> </span><span class="token">directly</span><span class="token"> </span><span class="token">by</span><span class="token"> </span><span class="token">name</span><span class="token">
 </span><span
@@ -288,7 +417,7 @@ data-heaptotal="0"><span class="token">r</span><span class="token">equire(</span
 	data-score="0.014411518807585587"
 	data-depth="36"
 	data-type="AssignmentExpression"
-	data-rss="114688"
+	data-rss="69632"
 	data-heapused="339272"
 data-heaptotal="0"><span class="token">e</span><span class="token">xports</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span
 	class="item AssignmentExpression
@@ -304,8 +433,8 @@ data-heaptotal="0"><span class="token">m</span><span class="token">odule.exports
 	data-score="0.014411518807585587"
 	data-depth="36"
 	data-type="Identifier"
-	data-rss="602112"
-	data-heapused="-916384"
+	data-rss="606208"
+	data-heapused="-916336"
 data-heaptotal="1031936"><span class="token">S</span><span class="token">teamShovel;</span></span><span class="token"></span></span><span class="token"></span></span><span class="token">
 </span><span class="token">
 </span><span class="token">var</span><span class="token"> </span><span class="token">stats</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span
@@ -538,7 +667,7 @@ data-heaptotal="0"><span class="whitespace">{
 	data-score="0.0030223145490365726"
 	data-depth="43"
 	data-type="Identifier"
-	data-rss="270336"
+	data-rss="266240"
 	data-heapused="320848"
 data-heaptotal="0"><span class="token"></span><span
 	class="item CallExpression
@@ -565,7 +694,7 @@ data-heaptotal="0"><span class="token">r</span><span class="token">equire(</span
 	data-score="0.0006338253001141146"
 	data-depth="50"
 	data-type="Identifier"
-	data-rss="0"
+	data-rss="4096"
 	data-heapused="59240"
 data-heaptotal="0"><span class="token"></span><span
 	class="item CallExpression
@@ -573,7 +702,7 @@ data-heaptotal="0"><span class="token"></span><span
 	data-score="0.0006338253001141146"
 	data-depth="50"
 	data-type="CallExpression"
-	data-rss="356352"
+	data-rss="360448"
 	data-heapused="652592"
 data-heaptotal="0"><span class="token">r</span><span class="token">equire(</span></span><span class="token">&quot;./utils&quot;);</span></span><span class="token">
 </span><span class="token">
@@ -600,9 +729,9 @@ data-heaptotal="0"><span class="token">f</span><span class="token">unction</span
 	data-score="1"
 	data-depth="12"
 	data-type="MemberExpression"
-	data-rss="28672"
-	data-heapused="68048"
-data-heaptotal="1019904"><span class="token">m</span><span class="token">odule.exports;</span></span><span class="token">
+	data-rss="0"
+	data-heapused="67472"
+data-heaptotal="0"><span class="token">m</span><span class="token">odule.exports;</span></span><span class="token">
 </span><span class="whitespace">
 	</span><span class="token">if</span><span class="token"> </span><span class="token">(</span><span
 	class="item UnaryExpression
@@ -633,7 +762,7 @@ data-heaptotal="0"><span class="token">inputData)</span></span><span class="toke
 	data-score="1"
 	data-depth="12"
 	data-type="ObjectExpression"
-	data-rss="4096"
+	data-rss="0"
 	data-heapused="20064"
 data-heaptotal="0"><span class="whitespace">{
 		</span><span class="token">&quot;lines&quot;:</span><span class="whitespace">		</span><span
@@ -651,7 +780,7 @@ data-heaptotal="0"><span class="token">s</span><span class="token">elf.lines(</s
 	data-depth="12"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="20032"
+	data-heapused="20192"
 data-heaptotal="0"><span class="token">inputData,</span></span><span class="token"> </span><span
 	class="item Identifier
 	evaluated depth12"
@@ -668,7 +797,7 @@ data-heaptotal="0"><span class="token">key)</span></span><span class="token">,</
 	data-depth="12"
 	data-type="CallExpression"
 	data-rss="0"
-	data-heapused="21176"
+	data-heapused="21512"
 data-heaptotal="0"><span class="token">s</span><span class="token">elf.conditions(</span><span
 	class="item Identifier
 	evaluated depth12"
@@ -676,7 +805,7 @@ data-heaptotal="0"><span class="token">s</span><span class="token">elf.condition
 	data-depth="12"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="20536"
+	data-heapused="20064"
 data-heaptotal="0"><span class="token">inputData,</span></span><span class="token"> </span><span
 	class="item Identifier
 	evaluated depth12"
@@ -693,14 +822,14 @@ data-heaptotal="0"><span class="token">key)</span></span><span class="token">,</
 	data-depth="12"
 	data-type="CallExpression"
 	data-rss="0"
-	data-heapused="21048"
+	data-heapused="20712"
 data-heaptotal="0"><span class="token">s</span><span class="token">elf.expressions(</span><span
 	class="item Identifier
 	evaluated depth12"
 	data-score="1"
 	data-depth="12"
 	data-type="Identifier"
-	data-rss="0"
+	data-rss="4096"
 	data-heapused="20064"
 data-heaptotal="0"><span class="token">inputData,</span></span><span class="token"> </span><span
 	class="item Identifier
@@ -718,7 +847,7 @@ data-heaptotal="0"><span class="token">key)</span></span><span class="token">,</
 	data-depth="12"
 	data-type="CallExpression"
 	data-rss="0"
-	data-heapused="20368"
+	data-heapused="20240"
 data-heaptotal="0"><span class="token">s</span><span class="token">elf.functions(</span><span
 	class="item Identifier
 	evaluated depth12"
@@ -726,7 +855,7 @@ data-heaptotal="0"><span class="token">s</span><span class="token">elf.functions
 	data-depth="12"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="20064"
+	data-heapused="20032"
 data-heaptotal="0"><span class="token">inputData,</span></span><span class="token"> </span><span
 	class="item Identifier
 	evaluated depth12"
@@ -764,7 +893,7 @@ data-heaptotal="0"><span class="token">f</span><span class="token">unction(input
 	data-depth="13"
 	data-type="CallExpression"
 	data-rss="8192"
-	data-heapused="26848"
+	data-heapused="26856"
 data-heaptotal="0"><span class="token">u</span><span class="token">til.calculateValue(</span><span
 	class="item Identifier
 	evaluated depth13"
@@ -780,8 +909,8 @@ data-heaptotal="0"><span class="token">inputData)</span></span><span class="toke
 	data-score="1"
 	data-depth="13"
 	data-type="ObjectExpression"
-	data-rss="0"
-	data-heapused="21736"
+	data-rss="4096"
+	data-heapused="21264"
 data-heaptotal="0"><span class="token">{</span><span class="token">};</span></span><span class="token">
 </span><span class="whitespace">
 	</span><span
@@ -807,7 +936,7 @@ data-heaptotal="0"><span class="token">O</span><span class="token">bject.keys(</
 	data-score="1"
 	data-depth="13"
 	data-type="Identifier"
-	data-rss="4096"
+	data-rss="0"
 	data-heapused="21192"
 data-heaptotal="0"><span class="token">inputData)</span></span><span class="token">
 </span><span class="whitespace">			</span><span class="token">.filter(</span><span
@@ -826,7 +955,7 @@ data-heaptotal="0"><span class="token">function(key)</span><span class="token"> 
 	data-depth="15"
 	data-type="CallExpression"
 	data-rss="0"
-	data-heapused="21976"
+	data-heapused="22560"
 data-heaptotal="0"><span class="token"></span><span
 	class="item BinaryExpression
 	evaluated depth15"
@@ -843,7 +972,7 @@ data-heaptotal="0"><span class="token">k</span><span class="token">ey.indexOf(&q
 	data-score="1"
 	data-depth="13"
 	data-type="FunctionExpression"
-	data-rss="4096"
+	data-rss="0"
 	data-heapused="21312"
 data-heaptotal="0"><span class="token">function(index)</span><span class="token"> </span><span class="token">{</span><span class="whitespace">
 				</span><span class="token">if</span><span class="token"> </span><span class="token">(</span><span
@@ -866,7 +995,7 @@ data-heaptotal="0"><span class="token">function(index)</span><span class="token"
 	data-depth="13"
 	data-type="FunctionExpression"
 	data-rss="0"
-	data-heapused="21280"
+	data-heapused="21544"
 data-heaptotal="0"><span class="token">function(acc,</span><span class="token"> </span><span class="token">cur)</span><span class="token"> </span><span class="token">{</span><span class="whitespace">
 				</span><span class="token">return</span><span class="token"> </span><span
 	class="item Identifier
@@ -885,7 +1014,7 @@ data-heaptotal="0"><span class="token">function(acc,</span><span class="token"> 
 	data-score="1"
 	data-depth="13"
 	data-type="CallExpression"
-	data-rss="0"
+	data-rss="4096"
 	data-heapused="21264"
 data-heaptotal="0"><span class="token">O</span><span class="token">bject.keys(</span><span
 	class="item Identifier
@@ -893,7 +1022,7 @@ data-heaptotal="0"><span class="token">O</span><span class="token">bject.keys(</
 	data-score="1"
 	data-depth="13"
 	data-type="Identifier"
-	data-rss="0"
+	data-rss="4096"
 	data-heapused="21192"
 data-heaptotal="0"><span class="token">inputData)</span></span><span class="token">
 </span><span class="whitespace">		</span><span class="token">.filter(</span><span
@@ -911,8 +1040,8 @@ data-heaptotal="0"><span class="token">function(index)</span><span class="token"
 	data-score="1"
 	data-depth="15"
 	data-type="BinaryExpression"
-	data-rss="4096"
-	data-heapused="25256"
+	data-rss="0"
+	data-heapused="23920"
 data-heaptotal="0"><span class="token"></span><span
 	class="item CallExpression
 	evaluated depth15"
@@ -928,7 +1057,7 @@ data-heaptotal="0"><span class="token">i</span><span class="token">ndex.indexOf(
 	data-depth="15"
 	data-type="BinaryExpression"
 	data-rss="0"
-	data-heapused="22344"
+	data-heapused="22608"
 data-heaptotal="0"><span class="token">&quot;id_&quot;</span><span class="token"> </span><span class="token">+</span><span class="token"> </span><span class="token">(</span><span
 	class="item LogicalExpression
 	evaluated depth15"
@@ -936,7 +1065,7 @@ data-heaptotal="0"><span class="token">&quot;id_&quot;</span><span class="token"
 	data-depth="15"
 	data-type="LogicalExpression"
 	data-rss="0"
-	data-heapused="23112"
+	data-heapused="22640"
 data-heaptotal="0"><span class="token"></span><span
 	class="item Identifier
 	evaluated depth15"
@@ -953,8 +1082,8 @@ data-heaptotal="0"><span class="token">key</span><span class="token"> </span></s
 	data-score="1"
 	data-depth="13"
 	data-type="FunctionExpression"
-	data-rss="0"
-	data-heapused="21320"
+	data-rss="4096"
+	data-heapused="21312"
 data-heaptotal="0"><span class="token">function(key)</span><span class="token"> </span><span class="token">{</span><span class="whitespace">
 			</span><span class="token">var</span><span class="token"> </span><span class="token">item</span><span class="whitespace">	</span><span class="token">=</span><span class="token"> </span><span
 	class="item MemberExpression
@@ -1019,7 +1148,7 @@ data-heaptotal="0"><span class="token">c</span><span class="token">overed</span>
 	data-score="1"
 	data-depth="13"
 	data-type="CallExpression"
-	data-rss="8192"
+	data-rss="0"
 	data-heapused="21160"
 data-heaptotal="0"><span class="token">O</span><span class="token">bject.keys(</span><span
 	class="item Identifier
@@ -1028,7 +1157,7 @@ data-heaptotal="0"><span class="token">O</span><span class="token">bject.keys(</
 	data-depth="13"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="21976"
+	data-heapused="21160"
 data-heaptotal="0"><span class="token">uniqueLines)</span></span><span class="token">
 </span><span class="whitespace">			</span><span class="token">.reduce(</span><span
 	class="item FunctionExpression
@@ -1037,7 +1166,7 @@ data-heaptotal="0"><span class="token">uniqueLines)</span></span><span class="to
 	data-depth="13"
 	data-type="FunctionExpression"
 	data-rss="0"
-	data-heapused="21080"
+	data-heapused="21192"
 data-heaptotal="0"><span class="token">function(acc,</span><span class="token"> </span><span class="token">cur)</span><span class="token"> </span><span class="token">{</span><span class="whitespace">
 				</span><span class="token">return</span><span class="token"> </span><span
 	class="item Identifier
@@ -1064,7 +1193,7 @@ data-heaptotal="0"><span class="whitespace">{
 	data-depth="13"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="22296"
+	data-heapused="21920"
 data-heaptotal="0"><span class="token">c</span><span class="token">overed,</span></span><span class="token">
 </span><span class="whitespace">		</span><span class="token">total:</span><span class="token"> </span><span
 	class="item Identifier
@@ -1073,7 +1202,7 @@ data-heaptotal="0"><span class="token">c</span><span class="token">overed,</span
 	data-depth="13"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="21864"
+	data-heapused="21432"
 data-heaptotal="0"><span class="token">t</span><span class="token">otal,</span></span><span class="token">
 </span><span class="whitespace">		</span><span class="token">percentage:</span><span class="token"> </span><span
 	class="item CallExpression
@@ -1081,7 +1210,7 @@ data-heaptotal="0"><span class="token">t</span><span class="token">otal,</span><
 	data-score="1"
 	data-depth="13"
 	data-type="CallExpression"
-	data-rss="4096"
+	data-rss="0"
 	data-heapused="21488"
 data-heaptotal="0"><span class="token">u</span><span class="token">til.percentage(</span><span
 	class="item Identifier
@@ -1089,8 +1218,8 @@ data-heaptotal="0"><span class="token">u</span><span class="token">til.percentag
 	data-score="1"
 	data-depth="13"
 	data-type="Identifier"
-	data-rss="0"
-	data-heapused="20928"
+	data-rss="4096"
+	data-heapused="21192"
 data-heaptotal="0"><span class="token">covered,</span></span><span class="token"> </span><span
 	class="item Identifier
 	evaluated depth13"
@@ -1146,7 +1275,7 @@ data-heaptotal="0"><span class="token">inputData)</span></span><span class="toke
 	data-depth="13"
 	data-type="CallExpression"
 	data-rss="0"
-	data-heapused="20848"
+	data-heapused="21096"
 data-heaptotal="0"><span class="token">u</span><span class="token">til.getInstruments(</span><span
 	class="item Identifier
 	evaluated depth13"
@@ -1154,7 +1283,7 @@ data-heaptotal="0"><span class="token">u</span><span class="token">til.getInstru
 	data-depth="13"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="21240"
+	data-heapused="21208"
 data-heaptotal="0"><span class="token">inputData,</span></span><span class="token"> </span><span
 	class="item Identifier
 	evaluated depth13"
@@ -1171,7 +1300,7 @@ data-heaptotal="0"><span class="token">key)</span></span><span class="token">
 	data-depth="13"
 	data-type="CallExpression"
 	data-rss="0"
-	data-heapused="21832"
+	data-heapused="21784"
 data-heaptotal="0"><span class="token">util.isOfType(</span><span
 	class="item ArrayExpression
 	evaluated depth13"
@@ -1209,7 +1338,7 @@ data-heaptotal="0"><span class="token">i</span><span class="token">nstruments.le
 	data-score="1"
 	data-depth="13"
 	data-type="AssignmentExpression"
-	data-rss="0"
+	data-rss="4096"
 	data-heapused="21208"
 data-heaptotal="0"><span class="token">c</span><span class="token">overed</span><span class="token"> </span><span class="token">=</span><span class="whitespace">
 		</span><span
@@ -1228,7 +1357,7 @@ data-heaptotal="0"><span class="token">i</span><span class="token">nstruments</s
 	data-depth="13"
 	data-type="MemberExpression"
 	data-rss="0"
-	data-heapused="21240"
+	data-heapused="21176"
 data-heaptotal="0"><span class="token">util.hasResults)</span></span><span class="token">
 </span><span class="whitespace">			</span><span class="token">.reduce(</span><span
 	class="item FunctionExpression
@@ -1259,7 +1388,7 @@ data-heaptotal="0"><span class="token">function(count,</span><span class="token"
 	data-depth="13"
 	data-type="ObjectExpression"
 	data-rss="0"
-	data-heapused="21472"
+	data-heapused="21248"
 data-heaptotal="0"><span class="whitespace">{
 		</span><span class="token">covered:</span><span class="token"> </span><span
 	class="item Identifier
@@ -1268,7 +1397,7 @@ data-heaptotal="0"><span class="whitespace">{
 	data-depth="13"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="21376"
+	data-heapused="21312"
 data-heaptotal="0"><span class="token">c</span><span class="token">overed,</span></span><span class="token">
 </span><span class="whitespace">		</span><span class="token">total:</span><span class="token"> </span><span
 	class="item Identifier
@@ -1277,7 +1406,7 @@ data-heaptotal="0"><span class="token">c</span><span class="token">overed,</span
 	data-depth="13"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="21608"
+	data-heapused="21176"
 data-heaptotal="0"><span class="token">t</span><span class="token">otal,</span></span><span class="token">
 </span><span class="whitespace">		</span><span class="token">percentage:</span><span class="token"> </span><span
 	class="item CallExpression
@@ -1286,7 +1415,7 @@ data-heaptotal="0"><span class="token">t</span><span class="token">otal,</span><
 	data-depth="13"
 	data-type="CallExpression"
 	data-rss="0"
-	data-heapused="21600"
+	data-heapused="21176"
 data-heaptotal="0"><span class="token">u</span><span class="token">til.percentage(</span><span
 	class="item Identifier
 	evaluated depth13"
@@ -1294,7 +1423,7 @@ data-heaptotal="0"><span class="token">u</span><span class="token">til.percentag
 	data-depth="13"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="21208"
+	data-heapused="21216"
 data-heaptotal="0"><span class="token">covered,</span></span><span class="token"> </span><span
 	class="item Identifier
 	evaluated depth13"
@@ -1302,7 +1431,7 @@ data-heaptotal="0"><span class="token">covered,</span></span><span class="token"
 	data-depth="13"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="21208"
+	data-heapused="21176"
 data-heaptotal="0"><span class="token">total)</span></span><span class="token">
 </span></span><span class="whitespace">	};</span></span><span class="token">
 };</span></span><span class="token"></span></span><span class="token">
@@ -1332,7 +1461,7 @@ data-heaptotal="0"><span class="token">f</span><span class="token">unction(input
 	data-depth="13"
 	data-type="CallExpression"
 	data-rss="0"
-	data-heapused="24336"
+	data-heapused="24048"
 data-heaptotal="0"><span class="token">u</span><span class="token">til.calculateValue(</span><span
 	class="item Identifier
 	evaluated depth13"
@@ -1365,7 +1494,7 @@ data-heaptotal="0"><span class="token">inputData,</span></span><span class="toke
 	data-depth="13"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="21344"
+	data-heapused="21216"
 data-heaptotal="0"><span class="token">key)</span></span><span class="token">;</span></span><span class="token">
 </span><span class="whitespace">
 	</span><span
@@ -1375,7 +1504,7 @@ data-heaptotal="0"><span class="token">key)</span></span><span class="token">;</
 	data-depth="13"
 	data-type="AssignmentExpression"
 	data-rss="0"
-	data-heapused="21408"
+	data-heapused="21376"
 data-heaptotal="0"><span class="token">t</span><span class="token">otal</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span
 	class="item MemberExpression
 	evaluated depth13"
@@ -1383,7 +1512,7 @@ data-heaptotal="0"><span class="token">t</span><span class="token">otal</span><s
 	data-depth="13"
 	data-type="MemberExpression"
 	data-rss="0"
-	data-heapused="21208"
+	data-heapused="21176"
 data-heaptotal="0"><span class="token">i</span><span class="token">nstruments.length;</span></span><span class="token"></span></span><span class="token">
 </span><span class="whitespace">	</span><span
 	class="item AssignmentExpression
@@ -1392,7 +1521,7 @@ data-heaptotal="0"><span class="token">i</span><span class="token">nstruments.le
 	data-depth="13"
 	data-type="AssignmentExpression"
 	data-rss="0"
-	data-heapused="21208"
+	data-heapused="21176"
 data-heaptotal="0"><span class="token">c</span><span class="token">overed</span><span class="token"> </span><span class="token">=</span><span class="whitespace">
 		</span><span
 	class="item CallExpression
@@ -1400,8 +1529,8 @@ data-heaptotal="0"><span class="token">c</span><span class="token">overed</span>
 	data-score="1"
 	data-depth="13"
 	data-type="CallExpression"
-	data-rss="0"
-	data-heapused="21336"
+	data-rss="4096"
+	data-heapused="21176"
 data-heaptotal="0"><span class="token">i</span><span class="token">nstruments</span><span class="whitespace">
 			</span><span class="token">.filter(</span><span
 	class="item MemberExpression
@@ -1410,7 +1539,7 @@ data-heaptotal="0"><span class="token">i</span><span class="token">nstruments</s
 	data-depth="13"
 	data-type="MemberExpression"
 	data-rss="0"
-	data-heapused="21312"
+	data-heapused="21184"
 data-heaptotal="0"><span class="token">util.hasResults)</span></span><span class="token">
 </span><span class="whitespace">			</span><span class="token">.reduce(</span><span
 	class="item FunctionExpression
@@ -1419,7 +1548,7 @@ data-heaptotal="0"><span class="token">util.hasResults)</span></span><span class
 	data-depth="13"
 	data-type="FunctionExpression"
 	data-rss="0"
-	data-heapused="21496"
+	data-heapused="21464"
 data-heaptotal="0"><span class="token">function(count,</span><span class="token"> </span><span class="token">item)</span><span class="token"> </span><span class="token">{</span><span class="whitespace">
 				</span><span class="token">return</span><span class="token"> </span><span
 	class="item BinaryExpression
@@ -1441,7 +1570,7 @@ data-heaptotal="0"><span class="token">function(count,</span><span class="token"
 	data-depth="13"
 	data-type="ObjectExpression"
 	data-rss="0"
-	data-heapused="21440"
+	data-heapused="21248"
 data-heaptotal="0"><span class="whitespace">{
 		</span><span class="token">covered:</span><span class="token"> </span><span
 	class="item Identifier
@@ -1450,7 +1579,7 @@ data-heaptotal="0"><span class="whitespace">{
 	data-depth="13"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="21344"
+	data-heapused="21312"
 data-heaptotal="0"><span class="token">c</span><span class="token">overed,</span></span><span class="token">
 </span><span class="whitespace">		</span><span class="token">total:</span><span class="token"> </span><span
 	class="item Identifier
@@ -1459,7 +1588,7 @@ data-heaptotal="0"><span class="token">c</span><span class="token">overed,</span
 	data-depth="13"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="21304"
+	data-heapused="21176"
 data-heaptotal="0"><span class="token">t</span><span class="token">otal,</span></span><span class="token">
 </span><span class="whitespace">		</span><span class="token">percentage:</span><span class="token"> </span><span
 	class="item CallExpression
@@ -1476,7 +1605,7 @@ data-heaptotal="0"><span class="token">u</span><span class="token">til.percentag
 	data-depth="13"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="21216"
+	data-heapused="21184"
 data-heaptotal="0"><span class="token">covered,</span></span><span class="token"> </span><span
 	class="item Identifier
 	evaluated depth13"
@@ -1484,7 +1613,7 @@ data-heaptotal="0"><span class="token">covered,</span></span><span class="token"
 	data-depth="13"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="21248"
+	data-heapused="21184"
 data-heaptotal="0"><span class="token">total)</span></span><span class="token">
 </span></span><span class="whitespace">	};</span></span><span class="token">
 };</span></span><span class="token"></span></span><span class="token">
@@ -1513,8 +1642,8 @@ data-heaptotal="0"><span class="token">f</span><span class="token">unction(input
 	data-score="1"
 	data-depth="13"
 	data-type="CallExpression"
-	data-rss="0"
-	data-heapused="24552"
+	data-rss="4096"
+	data-heapused="24392"
 data-heaptotal="0"><span class="token">u</span><span class="token">til.calculateValue(</span><span
 	class="item Identifier
 	evaluated depth13"
@@ -1548,7 +1677,7 @@ data-heaptotal="0"><span class="token">inputData,</span></span><span class="toke
 	data-depth="13"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="21272"
+	data-heapused="21176"
 data-heaptotal="0"><span class="token">key)</span></span><span class="token">
 </span><span class="whitespace">				</span><span class="token">.filter(</span><span
 	class="item CallExpression
@@ -1557,7 +1686,7 @@ data-heaptotal="0"><span class="token">key)</span></span><span class="token">
 	data-depth="13"
 	data-type="CallExpression"
 	data-rss="0"
-	data-heapused="21440"
+	data-heapused="21408"
 data-heaptotal="0"><span class="token">util.isOfType(</span><span
 	class="item ArrayExpression
 	evaluated depth13"
@@ -1565,7 +1694,7 @@ data-heaptotal="0"><span class="token">util.isOfType(</span><span
 	data-depth="13"
 	data-type="ArrayExpression"
 	data-rss="0"
-	data-heapused="21432"
+	data-heapused="21208"
 data-heaptotal="0"><span class="token">[</span><span class="whitespace">
 						</span><span class="token">&quot;FunctionDeclaration&quot;,</span><span class="whitespace">
 						</span><span class="token">&quot;FunctionExpression&quot;,</span><span class="whitespace">
@@ -1578,7 +1707,7 @@ data-heaptotal="0"><span class="token">[</span><span class="whitespace">
 	data-depth="13"
 	data-type="AssignmentExpression"
 	data-rss="0"
-	data-heapused="21408"
+	data-heapused="21376"
 data-heaptotal="0"><span class="token">t</span><span class="token">otal</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span
 	class="item MemberExpression
 	evaluated depth13"
@@ -1586,7 +1715,7 @@ data-heaptotal="0"><span class="token">t</span><span class="token">otal</span><s
 	data-depth="13"
 	data-type="MemberExpression"
 	data-rss="0"
-	data-heapused="21336"
+	data-heapused="21176"
 data-heaptotal="0"><span class="token">i</span><span class="token">nstruments.length;</span></span><span class="token"></span></span><span class="token">
 </span><span class="whitespace">
 	</span><span
@@ -1596,7 +1725,7 @@ data-heaptotal="0"><span class="token">i</span><span class="token">nstruments.le
 	data-depth="13"
 	data-type="AssignmentExpression"
 	data-rss="0"
-	data-heapused="21208"
+	data-heapused="21176"
 data-heaptotal="0"><span class="token">c</span><span class="token">overed</span><span class="token"> </span><span class="token">=</span><span class="whitespace">
 		</span><span
 	class="item CallExpression
@@ -1622,8 +1751,8 @@ data-heaptotal="0"><span class="token">util.hasResults)</span></span><span class
 	data-score="1"
 	data-depth="13"
 	data-type="FunctionExpression"
-	data-rss="0"
-	data-heapused="21584"
+	data-rss="4096"
+	data-heapused="21456"
 data-heaptotal="0"><span class="token">function(count,</span><span class="token"> </span><span class="token">item)</span><span class="token"> </span><span class="token">{</span><span class="whitespace">
 				</span><span class="token">return</span><span class="token"> </span><span
 	class="item BinaryExpression
@@ -1645,7 +1774,7 @@ data-heaptotal="0"><span class="token">function(count,</span><span class="token"
 	data-depth="13"
 	data-type="ObjectExpression"
 	data-rss="0"
-	data-heapused="21408"
+	data-heapused="21248"
 data-heaptotal="0"><span class="whitespace">{
 		</span><span class="token">covered:</span><span class="token"> </span><span
 	class="item Identifier
@@ -1654,7 +1783,7 @@ data-heaptotal="0"><span class="whitespace">{
 	data-depth="13"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="21408"
+	data-heapused="21344"
 data-heaptotal="0"><span class="token">c</span><span class="token">overed,</span></span><span class="token">
 </span><span class="whitespace">		</span><span class="token">total:</span><span class="token"> </span><span
 	class="item Identifier
@@ -1663,7 +1792,7 @@ data-heaptotal="0"><span class="token">c</span><span class="token">overed,</span
 	data-depth="13"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="21368"
+	data-heapused="21176"
 data-heaptotal="0"><span class="token">t</span><span class="token">otal,</span></span><span class="token">
 </span><span class="whitespace">		</span><span class="token">percentage:</span><span class="token"> </span><span
 	class="item CallExpression
@@ -1699,7 +1828,7 @@ data-heaptotal="0"><span class="token">total)</span></span><span class="token">
 	data-score="0.00013292279957849158"
 	data-depth="57"
 	data-type="AssignmentExpression"
-	data-rss="528384"
+	data-rss="397312"
 	data-heapused="789736"
 data-heaptotal="1031936"><span class="token">m</span><span class="token">odule.exports</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span
 	class="item ObjectExpression
@@ -1708,7 +1837,7 @@ data-heaptotal="1031936"><span class="token">m</span><span class="token">odule.e
 	data-depth="57"
 	data-type="ObjectExpression"
 	data-rss="1069056"
-	data-heapused="-1904568"
+	data-heapused="-1897232"
 data-heaptotal="4194304"><span class="token">{</span><span class="token">};</span></span><span class="token"></span></span><span class="token">
 </span><span class="token">
 </span><span
@@ -1879,15 +2008,15 @@ data-heaptotal="0"><span class="token">f</span><span class="token">unction</span
 	data-depth="15"
 	data-type="BinaryExpression"
 	data-rss="0"
-	data-heapused="24020"
+	data-heapused="23852"
 data-heaptotal="0"><span class="token"></span><span
 	class="item MemberExpression
 	evaluated depth15"
 	data-score="1"
 	data-depth="15"
 	data-type="MemberExpression"
-	data-rss="2048"
-	data-heapused="23358"
+	data-rss="0"
+	data-heapused="23290"
 data-heaptotal="0"><span class="token">inputData.__shallowestCall</span><span class="token"> </span></span><span class="token">!</span><span class="token">==</span><span class="token"> </span><span
 	class="item Identifier
 	evaluated depth15"
@@ -1895,7 +2024,7 @@ data-heaptotal="0"><span class="token">inputData.__shallowestCall</span><span cl
 	data-depth="15"
 	data-type="Identifier"
 	data-rss="1024"
-	data-heapused="23358"
+	data-heapused="23350"
 data-heaptotal="0"><span class="token">u</span><span class="token">ndefined)</span></span><span class="token"></span></span><span class="token">
 </span><span class="whitespace">		</span><span class="token">return</span><span class="token"> </span><span
 	class="item MemberExpression
@@ -1903,8 +2032,8 @@ data-heaptotal="0"><span class="token">u</span><span class="token">ndefined)</sp
 	data-score="1"
 	data-depth="15"
 	data-type="MemberExpression"
-	data-rss="27306.666666666664"
-	data-heapused="-4425002.666666667"
+	data-rss="0"
+	data-heapused="23266.666666666664"
 data-heaptotal="0"><span class="token">i</span><span class="token">nputData.__shallowestCall;</span></span><span class="token">
 </span><span class="whitespace">
 	</span><span class="token">return</span><span class="token"> </span><span
@@ -1914,7 +2043,7 @@ data-heaptotal="0"><span class="token">i</span><span class="token">nputData.__sh
 	data-depth="15"
 	data-type="AssignmentExpression"
 	data-rss="0"
-	data-heapused="23128"
+	data-heapused="23392"
 data-heaptotal="0"><span class="token">i</span><span class="token">nputData.__shallowestCall</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span class="token">(</span><span class="whitespace">
 		</span><span
 	class="item CallExpression
@@ -1931,7 +2060,7 @@ data-heaptotal="0"><span class="token">u</span><span class="token">til.getInstru
 	data-depth="15"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="23856"
+	data-heapused="23392"
 data-heaptotal="0"><span class="token">inputData)</span></span><span class="token">
 </span><span class="whitespace">			</span><span class="token">.filter(</span><span
 	class="item MemberExpression
@@ -2007,16 +2136,16 @@ data-heaptotal="0"><span class="token">f</span><span class="token">unction</span
 	data-score="1"
 	data-depth="14"
 	data-type="CallExpression"
-	data-rss="0"
-	data-heapused="23478"
+	data-rss="1024"
+	data-heapused="23404"
 data-heaptotal="0"><span class="token">O</span><span class="token">bject.keys(</span><span
 	class="item Identifier
 	evaluated depth14"
 	data-score="1"
 	data-depth="14"
 	data-type="Identifier"
-	data-rss="0"
-	data-heapused="23362"
+	data-rss="1024"
+	data-heapused="22732"
 data-heaptotal="0"><span class="token">inputData)</span></span><span class="token">
 </span><span class="whitespace">			</span><span class="token">.filter(</span><span
 	class="item FunctionExpression
@@ -2025,7 +2154,7 @@ data-heaptotal="0"><span class="token">inputData)</span></span><span class="toke
 	data-depth="14"
 	data-type="FunctionExpression"
 	data-rss="0"
-	data-heapused="22870"
+	data-heapused="22860"
 data-heaptotal="0"><span class="token">function(key)</span><span class="token"> </span><span class="token">{</span><span class="whitespace">
 				</span><span class="token">return</span><span class="token"> </span><span
 	class="item CallExpression
@@ -2033,16 +2162,16 @@ data-heaptotal="0"><span class="token">function(key)</span><span class="token"> 
 	data-score="1"
 	data-depth="16"
 	data-type="CallExpression"
-	data-rss="0"
-	data-heapused="23800"
+	data-rss="2730.6666666666665"
+	data-heapused="23693.333333333332"
 data-heaptotal="0"><span class="token"></span><span
 	class="item BinaryExpression
 	evaluated depth16"
 	data-score="1"
 	data-depth="16"
 	data-type="BinaryExpression"
-	data-rss="0"
-	data-heapused="24525.333333333332"
+	data-rss="1365.3333333333333"
+	data-heapused="24306.666666666664"
 data-heaptotal="0"><span class="token">k</span><span class="token">ey.indexOf(</span><span
 	class="item BinaryExpression
 	evaluated depth16"
@@ -2050,7 +2179,7 @@ data-heaptotal="0"><span class="token">k</span><span class="token">ey.indexOf(</
 	data-depth="16"
 	data-type="BinaryExpression"
 	data-rss="0"
-	data-heapused="23770.666666666664"
+	data-heapused="23696"
 data-heaptotal="0"><span class="token">&quot;id_&quot;</span><span class="token"> </span><span class="token">+</span><span class="token"> </span><span class="token">(</span><span
 	class="item LogicalExpression
 	evaluated depth16"
@@ -2058,7 +2187,7 @@ data-heaptotal="0"><span class="token">&quot;id_&quot;</span><span class="token"
 	data-depth="16"
 	data-type="LogicalExpression"
 	data-rss="0"
-	data-heapused="23738.666666666664"
+	data-heapused="23696"
 data-heaptotal="0"><span class="token"></span><span
 	class="item Identifier
 	evaluated depth16"
@@ -2066,7 +2195,7 @@ data-heaptotal="0"><span class="token"></span><span
 	data-depth="16"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="23728"
+	data-heapused="23706.666666666664"
 data-heaptotal="0"><span class="token">scope</span><span class="token"> </span></span><span class="token">|</span><span class="token">|</span><span class="token"> </span><span class="token">&quot;&quot;)</span></span><span class="token">)</span></span><span class="token"> </span></span><span class="token">===</span><span class="token"> </span><span class="token">0;</span></span><span class="token">
 </span><span class="whitespace">			</span><span class="token">})</span></span><span class="token">
 </span><span class="whitespace">			</span><span class="token">.map(</span><span
@@ -2075,8 +2204,8 @@ data-heaptotal="0"><span class="token">scope</span><span class="token"> </span><
 	data-score="1"
 	data-depth="14"
 	data-type="FunctionExpression"
-	data-rss="1024"
-	data-heapused="23104"
+	data-rss="0"
+	data-heapused="23030"
 data-heaptotal="0"><span class="token">function(key)</span><span class="token"> </span><span class="token">{</span><span class="whitespace">
 				</span><span
 	class="item AssignmentExpression
@@ -2112,23 +2241,23 @@ data-heaptotal="0"><span class="token">f</span><span class="token">unction</span
 	data-score="1"
 	data-depth="14"
 	data-type="AssignmentExpression"
-	data-rss="0"
-	data-heapused="23484"
+	data-rss="4096"
+	data-heapused="23356"
 data-heaptotal="0"><span class="token">t</span><span class="token">ypes</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span
 	class="item Identifier
 	evaluated depth14"
 	data-score="1"
 	data-depth="14"
 	data-type="Identifier"
-	data-rss="0"
-	data-heapused="22316"
+	data-rss="2048"
+	data-heapused="22220"
 data-heaptotal="0"><span class="token"></span><span
 	class="item BinaryExpression
 	evaluated depth14"
 	data-score="1"
 	data-depth="14"
 	data-type="BinaryExpression"
-	data-rss="0"
+	data-rss="2048"
 	data-heapused="22220"
 data-heaptotal="0"><span class="token"></span><span
 	class="item ConditionalExpression
@@ -2137,7 +2266,7 @@ data-heaptotal="0"><span class="token"></span><span
 	data-depth="14"
 	data-type="ConditionalExpression"
 	data-rss="0"
-	data-heapused="22220"
+	data-heapused="22204"
 data-heaptotal="0"><span class="token">t</span><span class="token">ypes</span><span class="token"> </span></span><span class="token">i</span><span class="token">nstanceof</span><span class="token"> </span><span
 	class="item Identifier
 	evaluated depth14"
@@ -2153,7 +2282,7 @@ data-heaptotal="0"><span class="token">A</span><span class="token">rray</span><s
 	data-depth="14"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="22392"
+	data-heapused="22312"
 data-heaptotal="0"><span class="token">t</span><span class="token">ypes</span><span class="token"> </span></span><span class="token">: </span><span
 	class="item ArrayExpression
 	unevaluated"><span class="token">[</span><span
@@ -2242,8 +2371,8 @@ data-heaptotal="0"><span class="token">f</span><span class="token">unction</span
 	data-score="1"
 	data-depth="14"
 	data-type="CallExpression"
-	data-rss="0"
-	data-heapused="22676"
+	data-rss="1024"
+	data-heapused="22722"
 data-heaptotal="0"><span class="token">u</span><span class="token">til.shallowestCall(</span><span
 	class="item Identifier
 	evaluated depth14"
@@ -2251,7 +2380,7 @@ data-heaptotal="0"><span class="token">u</span><span class="token">til.shallowes
 	data-depth="14"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="22192"
+	data-heapused="22178"
 data-heaptotal="0"><span class="token">inputData)</span></span><span class="token">,</span></span><span class="token">
 </span><span class="whitespace">		</span><span class="token">graceThreshold</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span class="token">5,</span><span class="whitespace">
 		</span><span class="token">inverseDampingFactor</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span class="token">1.25;</span><span class="whitespace">
@@ -2262,8 +2391,8 @@ data-heaptotal="0"><span class="token">inputData)</span></span><span class="toke
 	data-score="1"
 	data-depth="14"
 	data-type="FunctionExpression"
-	data-rss="0"
-	data-heapused="22694"
+	data-rss="1024"
+	data-heapused="22406"
 data-heaptotal="0"><span class="token">f</span><span class="token">unction(item)</span><span class="token"> </span><span class="token">{</span><span class="whitespace">
 		</span><span class="token">return</span><span class="token"> </span><span class="token">(</span><span class="whitespace">
 			</span><span
@@ -2381,8 +2510,8 @@ data-heaptotal="0"><span class="token">f</span><span class="token">unction</span
 	data-score="1"
 	data-depth="14"
 	data-type="BinaryExpression"
-	data-rss="0"
-	data-heapused="22584"
+	data-rss="1024"
+	data-heapused="22596"
 data-heaptotal="0"><span class="token">(</span><span
 	class="item UnaryExpression
 	evaluated depth14"
@@ -2390,23 +2519,23 @@ data-heaptotal="0"><span class="token">(</span><span
 	data-depth="14"
 	data-type="UnaryExpression"
 	data-rss="0"
-	data-heapused="22476"
+	data-heapused="22180"
 data-heaptotal="0"><span class="token"></span><span
 	class="item BinaryExpression
 	evaluated depth14"
 	data-score="1"
 	data-depth="14"
 	data-type="BinaryExpression"
-	data-rss="0"
-	data-heapused="22276"
+	data-rss="1024"
+	data-heapused="22164"
 data-heaptotal="0"><span class="token">+</span><span class="token">(</span><span
 	class="item BinaryExpression
 	evaluated depth14"
 	data-score="1"
 	data-depth="14"
 	data-type="BinaryExpression"
-	data-rss="0"
-	data-heapused="22214"
+	data-rss="1024"
+	data-heapused="22172"
 data-heaptotal="0"><span class="token">(</span><span
 	class="item BinaryExpression
 	evaluated depth14"
@@ -2414,23 +2543,23 @@ data-heaptotal="0"><span class="token">(</span><span
 	data-depth="14"
 	data-type="BinaryExpression"
 	data-rss="1024"
-	data-heapused="22148"
+	data-heapused="22166"
 data-heaptotal="0"><span class="token"></span><span
 	class="item Identifier
 	evaluated depth14"
 	data-score="1"
 	data-depth="14"
 	data-type="Identifier"
-	data-rss="1024"
-	data-heapused="22222"
+	data-rss="0"
+	data-heapused="22174"
 data-heaptotal="0"><span class="token">a/</span></span><span class="token"></span><span
 	class="item Identifier
 	evaluated depth14"
 	data-score="1"
 	data-depth="14"
 	data-type="Identifier"
-	data-rss="0"
-	data-heapused="22222"
+	data-rss="1024"
+	data-heapused="22174"
 data-heaptotal="0"><span class="token">b)</span></span><span class="token"></span></span><span class="token">*10000)</span></span><span class="token">|</span></span><span class="token">0)</span></span><span class="token"> /</span><span class="token"> </span><span class="token">100;</span></span><span class="token">
 };</span></span><span class="token"></span></span><span class="token">
 </span><span class="token">
@@ -2655,7 +2784,7 @@ data-heaptotal="0"><span class="token"></span><span
 	data-score="0.014411518807585587"
 	data-depth="36"
 	data-type="CallExpression"
-	data-rss="720896"
+	data-rss="983040"
 	data-heapused="698912"
 data-heaptotal="1019904"><span class="token">r</span><span class="token">equire(</span></span><span class="token">&quot;crypto&quot;),</span></span><span class="token">
 </span><span class="whitespace">	</span><span class="token">esprima</span><span class="whitespace">		</span><span class="token">=</span><span class="token"> </span><span
@@ -2689,7 +2818,7 @@ data-heaptotal="0"><span class="token"></span><span
 	data-score="0.014411518807585587"
 	data-depth="36"
 	data-type="CallExpression"
-	data-rss="946176"
+	data-rss="950272"
 	data-heapused="617768"
 data-heaptotal="0"><span class="token">r</span><span class="token">equire(</span></span><span class="token">&quot;escodegen&quot;),</span></span><span class="token">
 </span><span class="whitespace">	</span><span class="token">estraverse</span><span class="whitespace">	</span><span class="token">=</span><span class="token"> </span><span
@@ -2698,7 +2827,7 @@ data-heaptotal="0"><span class="token">r</span><span class="token">equire(</span
 	data-score="0.014411518807585587"
 	data-depth="36"
 	data-type="CallExpression"
-	data-rss="720896"
+	data-rss="778240"
 	data-heapused="-1918872"
 data-heaptotal="0"><span class="token"></span><span
 	class="item Identifier
@@ -2789,24 +2918,24 @@ data-heaptotal="0"><span class="token">f</span><span class="token">unction</span
 	data-score="1"
 	data-depth="12"
 	data-type="AssignmentExpression"
-	data-rss="35840.00000000001"
-	data-heapused="87492.66666666667"
+	data-rss="34133.333333333336"
+	data-heapused="87292.66666666666"
 data-heaptotal="0"><span class="token">f</span><span class="token">ilename</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span
 	class="item Identifier
 	evaluated depth12"
 	data-score="1"
 	data-depth="12"
 	data-type="Identifier"
-	data-rss="4437.333333333333"
-	data-heapused="19652.666666666668"
+	data-rss="4096"
+	data-heapused="19764"
 data-heaptotal="0"><span class="token"></span><span
 	class="item LogicalExpression
 	evaluated depth12"
 	data-score="1"
 	data-depth="12"
 	data-type="LogicalExpression"
-	data-rss="3754.6666666666665"
-	data-heapused="19647.333333333336"
+	data-rss="3754.666666666667"
+	data-heapused="19635.333333333332"
 data-heaptotal="0"><span class="token">f</span><span class="token">ilename</span><span class="token"> </span></span><span class="token">|</span><span class="token">|</span><span class="token"> </span><span class="token">&quot;implicit-filename&quot;;</span></span><span class="token"></span></span><span class="token">
 </span><span class="whitespace">	</span><span
 	class="item AssignmentExpression
@@ -2814,8 +2943,8 @@ data-heaptotal="0"><span class="token">f</span><span class="token">ilename</span
 	data-score="1"
 	data-depth="12"
 	data-type="AssignmentExpression"
-	data-rss="3413.3333333333335"
-	data-heapused="19671.333333333332"
+	data-rss="2730.6666666666665"
+	data-heapused="19670.666666666668"
 data-heaptotal="0"><span class="token">i</span><span class="token">ncorporateMap</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span
 	class="item BinaryExpression
 	evaluated depth12"
@@ -2823,23 +2952,23 @@ data-heaptotal="0"><span class="token">i</span><span class="token">ncorporateMap
 	data-depth="12"
 	data-type="BinaryExpression"
 	data-rss="3413.333333333333"
-	data-heapused="19654.666666666664"
+	data-heapused="19640.666666666664"
 data-heaptotal="0"><span class="token"></span><span
 	class="item Identifier
 	evaluated depth12"
 	data-score="1"
 	data-depth="12"
 	data-type="Identifier"
-	data-rss="3072"
-	data-heapused="19628.666666666664"
+	data-rss="2730.6666666666665"
+	data-heapused="19621.333333333332"
 data-heaptotal="0"><span class="token"></span><span
 	class="item ConditionalExpression
 	evaluated depth12"
 	data-score="1"
 	data-depth="12"
 	data-type="ConditionalExpression"
-	data-rss="3754.6666666666665"
-	data-heapused="19634"
+	data-rss="3413.333333333333"
+	data-heapused="19618"
 data-heaptotal="0"><span class="token">i</span><span class="token">ncorporateMap</span><span class="token"> </span></span><span class="token">=</span><span class="token">==</span><span class="token"> </span><span class="token">false</span><span class="token"> </span></span><span class="token">? </span><span class="token">false</span><span class="token"> </span><span class="token">:</span><span class="token"> </span><span class="token">true;</span></span><span class="token"></span></span><span class="token">
 </span><span class="whitespace">
 	</span><span class="token">var</span><span class="token"> </span><span class="token">ast</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span
@@ -2849,23 +2978,23 @@ data-heaptotal="0"><span class="token">i</span><span class="token">ncorporateMap
 	data-depth="12"
 	data-type="CallExpression"
 	data-rss="3413.333333333333"
-	data-heapused="19633.333333333336"
+	data-heapused="19642"
 data-heaptotal="0"><span class="token">e</span><span class="token">sprima.parse(</span><span
 	class="item Identifier
 	evaluated depth12"
 	data-score="1"
 	data-depth="12"
 	data-type="Identifier"
-	data-rss="2730.6666666666665"
-	data-heapused="19694"
+	data-rss="3072"
+	data-heapused="19626.666666666668"
 data-heaptotal="0"><span class="token">data,</span></span><span class="token"> </span><span
 	class="item ObjectExpression
 	evaluated depth12"
 	data-score="1"
 	data-depth="12"
 	data-type="ObjectExpression"
-	data-rss="3754.6666666666665"
-	data-heapused="19642.666666666664"
+	data-rss="3413.3333333333335"
+	data-heapused="19618"
 data-heaptotal="0"><span class="token">{loc:</span><span class="token"> </span><span class="token">true,</span><span class="token"> </span><span class="token">range:</span><span class="token"> </span><span class="token">true,</span><span class="token"> </span><span class="token">raw:</span><span class="token"> </span><span class="token">true})</span></span><span class="token">,</span></span><span class="token">
 </span><span class="whitespace">		</span><span class="token">filetag</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span
 	class="item CallExpression
@@ -2873,16 +3002,16 @@ data-heaptotal="0"><span class="token">{loc:</span><span class="token"> </span><
 	data-score="1"
 	data-depth="12"
 	data-type="CallExpression"
-	data-rss="53589.333333333336"
-	data-heapused="100752"
-data-heaptotal="84992"><span class="token">c</span><span class="token">rypto.createHash(&quot;md5&quot;).update(</span><span
+	data-rss="48469.333333333336"
+	data-heapused="100915.33333333333"
+data-heaptotal="0"><span class="token">c</span><span class="token">rypto.createHash(&quot;md5&quot;).update(</span><span
 	class="item Identifier
 	evaluated depth12"
 	data-score="1"
 	data-depth="12"
 	data-type="Identifier"
-	data-rss="4095.9999999999995"
-	data-heapused="19988.666666666664"
+	data-rss="3754.666666666666"
+	data-heapused="19966.666666666664"
 data-heaptotal="0"><span class="token">filename)</span></span><span class="token">.digest(&quot;hex&quot;),</span></span><span class="token">
 </span><span class="whitespace">
 		</span><span class="token">//</span><span class="token"> </span><span class="token">State</span><span class="token"> </span><span class="token">and</span><span class="token"> </span><span class="token">storage</span><span class="whitespace">
@@ -2895,7 +3024,7 @@ data-heaptotal="0"><span class="token">filename)</span></span><span class="token
 	data-depth="12"
 	data-type="ObjectExpression"
 	data-rss="3072"
-	data-heapused="19841.333333333332"
+	data-heapused="19868.666666666664"
 data-heaptotal="0"><span class="token">{</span><span class="token">};</span></span><span class="token">
 </span><span class="whitespace">
 	</span><span class="token">//</span><span class="token"> </span><span class="token">Process</span><span class="token"> </span><span class="token">AST</span><span class="whitespace">
@@ -2905,23 +3034,23 @@ data-heaptotal="0"><span class="token">{</span><span class="token">};</span></sp
 	data-score="1"
 	data-depth="12"
 	data-type="CallExpression"
-	data-rss="3754.6666666666665"
-	data-heapused="19638.666666666668"
+	data-rss="3413.333333333333"
+	data-heapused="19640"
 data-heaptotal="0"><span class="token">e</span><span class="token">straverse.replace(</span><span
 	class="item Identifier
 	evaluated depth12"
 	data-score="1"
 	data-depth="12"
 	data-type="Identifier"
-	data-rss="3072"
-	data-heapused="19639.333333333336"
+	data-rss="3413.333333333333"
+	data-heapused="19786"
 data-heaptotal="0"><span class="token">ast,</span></span><span class="token"> </span><span
 	class="item ObjectExpression
 	evaluated depth12"
 	data-score="1"
 	data-depth="12"
 	data-type="ObjectExpression"
-	data-rss="3754.6666666666665"
+	data-rss="3072"
 	data-heapused="19775.333333333336"
 data-heaptotal="0"><span class="token">{</span><span class="whitespace">
 
@@ -2939,8 +3068,8 @@ data-heaptotal="0"><span class="token">{</span><span class="whitespace">
 	data-score="1"
 	data-depth="12"
 	data-type="Identifier"
-	data-rss="3072"
-	data-heapused="19696.66666666666"
+	data-rss="3754.6666666666665"
+	data-heapused="19671.33333333333"
 data-heaptotal="0"><span class="token">p</span><span class="token">reprocessNode,</span></span><span class="token">
 </span><span class="whitespace">
 		</span><span class="token">//</span><span class="token"> </span><span class="token">Leave</span><span class="token"> </span><span class="token">is</span><span class="token"> </span><span class="token">where</span><span class="token"> </span><span class="token">we</span><span class="token"> </span><span class="token">replace</span><span class="token"> </span><span class="token">the</span><span class="token"> </span><span class="token">actual</span><span class="token"> </span><span class="token">nodes.</span><span class="whitespace">
@@ -2951,8 +3080,8 @@ data-heaptotal="0"><span class="token">p</span><span class="token">reprocessNode
 	data-score="1"
 	data-depth="12"
 	data-type="FunctionExpression"
-	data-rss="3754.666666666666"
-	data-heapused="19642.000000000004"
+	data-rss="3413.3333333333335"
+	data-heapused="19643.333333333336"
 data-heaptotal="0"><span class="token">f</span><span class="token">unction</span><span class="token"> </span><span class="token">(node)</span><span class="token"> </span><span class="token">{</span><span class="whitespace">
 
 			</span><span class="token">if</span><span class="token"> </span><span class="token">(</span><span
@@ -2961,8 +3090,8 @@ data-heaptotal="0"><span class="token">f</span><span class="token">unction</span
 	data-score="1"
 	data-depth="16"
 	data-type="MemberExpression"
-	data-rss="2776.177777777777"
-	data-heapused="24690.311111111125"
+	data-rss="2639.6444444444446"
+	data-heapused="24724.266666666685"
 data-heaptotal="0"><span class="token">node.noReplace)</span></span><span class="token">
 </span><span class="whitespace">				</span><span class="token">return;</span><span class="whitespace">
 
@@ -2975,24 +3104,24 @@ data-heaptotal="0"><span class="token">node.noReplace)</span></span><span class=
 	data-score="1"
 	data-depth="16"
 	data-type="UnaryExpression"
-	data-rss="4577.882352941177"
-	data-heapused="24622.588235294115"
+	data-rss="4256.6274509803925"
+	data-heapused="24622.27450980392"
 data-heaptotal="0"><span class="token">~</span><span
 	class="item CallExpression
 	evaluated depth16"
 	data-score="1"
 	data-depth="16"
 	data-type="CallExpression"
-	data-rss="4417.254901960784"
-	data-heapused="24373.019607843133"
+	data-rss="4497.56862745098"
+	data-heapused="24374.43137254902"
 data-heaptotal="0"><span class="token">allowedReplacements.indexOf(</span><span
 	class="item MemberExpression
 	evaluated depth16"
 	data-score="1"
 	data-depth="16"
 	data-type="MemberExpression"
-	data-rss="4176.313725490196"
-	data-heapused="24375.372549019605"
+	data-rss="4256.6274509803925"
+	data-heapused="24369.41176470588"
 data-heaptotal="0"><span class="token">node.type)</span></span><span class="token">)</span></span><span class="token"></span></span><span class="token">
 </span><span class="whitespace">				</span><span class="token">return</span><span class="token"> </span><span class="token">(</span><span class="whitespace">
 					</span><span
@@ -3001,8 +3130,8 @@ data-heaptotal="0"><span class="token">node.type)</span></span><span class="toke
 	data-score="1"
 	data-depth="16"
 	data-type="UpdateExpression"
-	data-rss="4973.714285714285"
-	data-heapused="24544.571428571428"
+	data-rss="5558.857142857142"
+	data-heapused="24535.999999999996"
 data-heaptotal="0"><span class="token">i</span><span class="token">d++,</span></span><span class="token">
 </span><span class="whitespace">					</span><span
 	class="item AssignmentExpression
@@ -3011,15 +3140,15 @@ data-heaptotal="0"><span class="token">i</span><span class="token">d++,</span></
 	data-depth="16"
 	data-type="AssignmentExpression"
 	data-rss="4973.714285714285"
-	data-heapused="24376.571428571424"
+	data-heapused="24367.428571428565"
 data-heaptotal="0"><span class="token">s</span><span class="token">ourceMap[</span><span
 	class="item BinaryExpression
 	evaluated depth16"
 	data-score="1"
 	data-depth="16"
 	data-type="BinaryExpression"
-	data-rss="5266.285714285714"
-	data-heapused="24376.571428571424"
+	data-rss="4973.714285714285"
+	data-heapused="24365.71428571428"
 data-heaptotal="0"><span class="token"></span><span
 	class="item BinaryExpression
 	evaluated depth16"
@@ -3027,120 +3156,8 @@ data-heaptotal="0"><span class="token"></span><span
 	data-depth="16"
 	data-type="BinaryExpression"
 	data-rss="5266.285714285714"
-	data-heapused="24535.428571428565"
+	data-heapused="24387.999999999996"
 data-heaptotal="0"><span class="token">&quot;id_&quot;</span><span class="token"> </span><span class="token">+</span><span class="token"> </span><span
-	class="item Identifier
-	evaluated depth16"
-	data-score="1"
-	data-depth="16"
-	data-type="Identifier"
-	data-rss="5266.285714285714"
-	data-heapused="24406.85714285714"
-data-heaptotal="0"><span class="token">f</span><span class="token">iletag</span><span class="token"> </span></span><span class="token"></span></span><span class="token">+ </span><span class="token">&quot;_&quot;</span><span class="token"> </span></span><span class="token">+ </span><span
-	class="item Identifier
-	evaluated depth16"
-	data-score="1"
-	data-depth="16"
-	data-type="Identifier"
-	data-rss="4973.714285714285"
-	data-heapused="24447.42857142857"
-data-heaptotal="0"><span class="token">i</span><span class="token">d]</span></span><span class="token"> =</span><span class="token"> </span><span
-	class="item ObjectExpression
-	evaluated depth16"
-	data-score="1"
-	data-depth="16"
-	data-type="ObjectExpression"
-	data-rss="4973.714285714285"
-	data-heapused="24409.714285714286"
-data-heaptotal="0"><span class="whitespace">{
-						</span><span class="token">&quot;loc&quot;:</span><span class="token"> </span><span
-	class="item MemberExpression
-	evaluated depth16"
-	data-score="1"
-	data-depth="16"
-	data-type="MemberExpression"
-	data-rss="5558.857142857142"
-	data-heapused="24542.85714285714"
-data-heaptotal="0"><span class="token">n</span><span class="token">ode.loc,</span></span><span class="token">
-</span><span class="whitespace">						</span><span class="token">&quot;range&quot;:</span><span class="token"> </span><span
-	class="item MemberExpression
-	evaluated depth16"
-	data-score="1"
-	data-depth="16"
-	data-type="MemberExpression"
-	data-rss="5558.857142857142"
-	data-heapused="24555.428571428565"
-data-heaptotal="0"><span class="token">n</span><span class="token">ode.range,</span></span><span class="token">
-</span><span class="whitespace">						</span><span class="token">&quot;results&quot;:</span><span class="token"> </span><span
-	class="item ArrayExpression
-	evaluated depth16"
-	data-score="1"
-	data-depth="16"
-	data-type="ArrayExpression"
-	data-rss="4973.714285714285"
-	data-heapused="24540.571428571428"
-data-heaptotal="0"><span class="token">[</span><span class="token">],</span></span><span class="token">
-</span><span class="whitespace">						</span><span class="token">&quot;stack&quot;:</span><span class="token"> </span><span
-	class="item MemberExpression
-	evaluated depth16"
-	data-score="1"
-	data-depth="16"
-	data-type="MemberExpression"
-	data-rss="5266.285714285714"
-	data-heapused="24478.285714285714"
-data-heaptotal="0"><span class="token">n</span><span class="token">ode.stackPath,</span></span><span class="token">
-</span><span class="whitespace">						</span><span class="token">&quot;type&quot;:</span><span class="token"> </span><span
-	class="item MemberExpression
-	evaluated depth16"
-	data-score="1"
-	data-depth="16"
-	data-type="MemberExpression"
-	data-rss="4681.142857142857"
-	data-heapused="24503.999999999996"
-data-heaptotal="0"><span class="token">n</span><span class="token">ode.type</span><span class="token">
-</span></span><span class="whitespace">					</span><span class="token">},</span></span><span class="token"></span></span><span class="token">
-</span><span class="whitespace">					</span><span
-	class="item Identifier
-	evaluated depth16"
-	data-score="1"
-	data-depth="16"
-	data-type="Identifier"
-	data-rss="5266.285714285714"
-	data-heapused="24369.71428571428"
-data-heaptotal="0"><span class="token"></span><span
-	class="item CallExpression
-	evaluated depth16"
-	data-score="1"
-	data-depth="16"
-	data-type="CallExpression"
-	data-rss="5558.857142857142"
-	data-heapused="24983.42857142857"
-data-heaptotal="0"><span class="token">s</span><span class="token">equenceExpression(</span></span><span class="token">
-</span><span class="whitespace">						</span><span
-	class="item BinaryExpression
-	evaluated depth16"
-	data-score="1"
-	data-depth="16"
-	data-type="BinaryExpression"
-	data-rss="5266.285714285714"
-	data-heapused="24381.14285714285"
-data-heaptotal="0"><span class="token"></span><span
-	class="item BinaryExpression
-	evaluated depth16"
-	data-score="1"
-	data-depth="16"
-	data-type="BinaryExpression"
-	data-rss="5851.428571428571"
-	data-heapused="24376.571428571424"
-data-heaptotal="0"><span class="token"></span><span
-	class="item BinaryExpression
-	evaluated depth16"
-	data-score="1"
-	data-depth="16"
-	data-type="BinaryExpression"
-	data-rss="4681.142857142857"
-	data-heapused="24372.571428571428"
-data-heaptotal="0"><span class="token">&quot;</span><span class="token">id_&quot;</span><span class="token"> </span><span class="token">+</span><span class="token"> </span><span
 	class="item Identifier
 	evaluated depth16"
 	data-score="1"
@@ -3155,7 +3172,119 @@ data-heaptotal="0"><span class="token">f</span><span class="token">iletag</span>
 	data-depth="16"
 	data-type="Identifier"
 	data-rss="5266.285714285714"
-	data-heapused="24451.999999999993"
+	data-heapused="24461.142857142855"
+data-heaptotal="0"><span class="token">i</span><span class="token">d]</span></span><span class="token"> =</span><span class="token"> </span><span
+	class="item ObjectExpression
+	evaluated depth16"
+	data-score="1"
+	data-depth="16"
+	data-type="ObjectExpression"
+	data-rss="4973.714285714285"
+	data-heapused="24421.14285714286"
+data-heaptotal="0"><span class="whitespace">{
+						</span><span class="token">&quot;loc&quot;:</span><span class="token"> </span><span
+	class="item MemberExpression
+	evaluated depth16"
+	data-score="1"
+	data-depth="16"
+	data-type="MemberExpression"
+	data-rss="5266.285714285714"
+	data-heapused="24544.571428571428"
+data-heaptotal="0"><span class="token">n</span><span class="token">ode.loc,</span></span><span class="token">
+</span><span class="whitespace">						</span><span class="token">&quot;range&quot;:</span><span class="token"> </span><span
+	class="item MemberExpression
+	evaluated depth16"
+	data-score="1"
+	data-depth="16"
+	data-type="MemberExpression"
+	data-rss="5558.857142857142"
+	data-heapused="24529.714285714283"
+data-heaptotal="0"><span class="token">n</span><span class="token">ode.range,</span></span><span class="token">
+</span><span class="whitespace">						</span><span class="token">&quot;results&quot;:</span><span class="token"> </span><span
+	class="item ArrayExpression
+	evaluated depth16"
+	data-score="1"
+	data-depth="16"
+	data-type="ArrayExpression"
+	data-rss="5266.285714285714"
+	data-heapused="24547.42857142857"
+data-heaptotal="0"><span class="token">[</span><span class="token">],</span></span><span class="token">
+</span><span class="whitespace">						</span><span class="token">&quot;stack&quot;:</span><span class="token"> </span><span
+	class="item MemberExpression
+	evaluated depth16"
+	data-score="1"
+	data-depth="16"
+	data-type="MemberExpression"
+	data-rss="4973.714285714285"
+	data-heapused="24473.142857142855"
+data-heaptotal="0"><span class="token">n</span><span class="token">ode.stackPath,</span></span><span class="token">
+</span><span class="whitespace">						</span><span class="token">&quot;type&quot;:</span><span class="token"> </span><span
+	class="item MemberExpression
+	evaluated depth16"
+	data-score="1"
+	data-depth="16"
+	data-type="MemberExpression"
+	data-rss="5558.857142857142"
+	data-heapused="24522.85714285714"
+data-heaptotal="0"><span class="token">n</span><span class="token">ode.type</span><span class="token">
+</span></span><span class="whitespace">					</span><span class="token">},</span></span><span class="token"></span></span><span class="token">
+</span><span class="whitespace">					</span><span
+	class="item Identifier
+	evaluated depth16"
+	data-score="1"
+	data-depth="16"
+	data-type="Identifier"
+	data-rss="4973.714285714285"
+	data-heapused="24369.714285714283"
+data-heaptotal="0"><span class="token"></span><span
+	class="item CallExpression
+	evaluated depth16"
+	data-score="1"
+	data-depth="16"
+	data-type="CallExpression"
+	data-rss="4973.714285714285"
+	data-heapused="24995.42857142857"
+data-heaptotal="0"><span class="token">s</span><span class="token">equenceExpression(</span></span><span class="token">
+</span><span class="whitespace">						</span><span
+	class="item BinaryExpression
+	evaluated depth16"
+	data-score="1"
+	data-depth="16"
+	data-type="BinaryExpression"
+	data-rss="5266.285714285714"
+	data-heapused="24365.14285714285"
+data-heaptotal="0"><span class="token"></span><span
+	class="item BinaryExpression
+	evaluated depth16"
+	data-score="1"
+	data-depth="16"
+	data-type="BinaryExpression"
+	data-rss="5266.285714285714"
+	data-heapused="24378.857142857138"
+data-heaptotal="0"><span class="token"></span><span
+	class="item BinaryExpression
+	evaluated depth16"
+	data-score="1"
+	data-depth="16"
+	data-type="BinaryExpression"
+	data-rss="5266.285714285714"
+	data-heapused="24358.85714285714"
+data-heaptotal="0"><span class="token">&quot;</span><span class="token">id_&quot;</span><span class="token"> </span><span class="token">+</span><span class="token"> </span><span
+	class="item Identifier
+	evaluated depth16"
+	data-score="1"
+	data-depth="16"
+	data-type="Identifier"
+	data-rss="4973.714285714285"
+	data-heapused="24365.14285714285"
+data-heaptotal="0"><span class="token">f</span><span class="token">iletag</span><span class="token"> </span></span><span class="token"></span></span><span class="token">+ </span><span class="token">&quot;_&quot;</span><span class="token"> </span></span><span class="token">+ </span><span
+	class="item Identifier
+	evaluated depth16"
+	data-score="1"
+	data-depth="16"
+	data-type="Identifier"
+	data-rss="4681.142857142857"
+	data-heapused="24452"
 data-heaptotal="0"><span class="token">i</span><span class="token">d,</span></span><span class="token"></span></span><span class="token">
 </span><span class="whitespace">						</span><span
 	class="item Identifier
@@ -3163,8 +3292,8 @@ data-heaptotal="0"><span class="token">i</span><span class="token">d,</span></sp
 	data-score="1"
 	data-depth="16"
 	data-type="Identifier"
-	data-rss="4973.714285714285"
-	data-heapused="24410.285714285717"
+	data-rss="5558.857142857142"
+	data-heapused="24417.14285714286"
 data-heaptotal="0"><span class="token">n</span><span class="token">ode</span><span class="token">
 </span></span><span class="whitespace">					</span><span class="token">))</span></span><span class="token">;</span><span class="whitespace">
 		</span><span class="token">}</span><span class="token">
@@ -3177,7 +3306,7 @@ data-heaptotal="0"><span class="token">n</span><span class="token">ode</span><sp
 	data-depth="12"
 	data-type="AssignmentExpression"
 	data-rss="3072"
-	data-heapused="19860"
+	data-heapused="19882"
 data-heaptotal="0"><span class="token">c</span><span class="token">ode</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span
 	class="item CallExpression
 	evaluated depth12"
@@ -3185,7 +3314,7 @@ data-heaptotal="0"><span class="token">c</span><span class="token">ode</span><sp
 	data-depth="12"
 	data-type="CallExpression"
 	data-rss="3072"
-	data-heapused="19751.333333333336"
+	data-heapused="19644"
 data-heaptotal="0"><span class="token">e</span><span class="token">scodegen.generate(</span><span
 	class="item Identifier
 	evaluated depth12"
@@ -3193,7 +3322,7 @@ data-heaptotal="0"><span class="token">e</span><span class="token">scodegen.gene
 	data-depth="12"
 	data-type="Identifier"
 	data-rss="3413.333333333333"
-	data-heapused="19677.333333333332"
+	data-heapused="19655.333333333332"
 data-heaptotal="0"><span class="token">ast)</span></span><span class="token">;</span></span><span class="token"></span></span><span class="token">
 </span><span class="whitespace">
 	</span><span class="token">if</span><span class="token"> </span><span class="token">(</span><span
@@ -3202,8 +3331,8 @@ data-heaptotal="0"><span class="token">ast)</span></span><span class="token">;</
 	data-score="1"
 	data-depth="12"
 	data-type="Identifier"
-	data-rss="13653.333333333336"
-	data-heapused="43798.666666666664"
+	data-rss="12287.999999999998"
+	data-heapused="43465.333333333336"
 data-heaptotal="0"><span class="token">incorporateMap)</span></span><span class="token">
 </span><span class="whitespace">		</span><span
 	class="item AssignmentExpression
@@ -3219,8 +3348,8 @@ data-heaptotal="0"><span class="token">c</span><span class="token">ode</span><sp
 	data-score="1"
 	data-depth="12"
 	data-type="CallExpression"
-	data-rss="15018.666666666666"
-	data-heapused="19690.666666666664"
+	data-rss="12288"
+	data-heapused="19688"
 data-heaptotal="0"><span class="token"></span><span
 	class="item Identifier
 	evaluated depth12"
@@ -3235,8 +3364,8 @@ data-heaptotal="0"><span class="token">p</span><span class="token">rependInstrum
 	data-score="1"
 	data-depth="12"
 	data-type="Identifier"
-	data-rss="12288"
-	data-heapused="19690.666666666664"
+	data-rss="13653.333333333332"
+	data-heapused="19693.333333333332"
 data-heaptotal="0"><span class="token">data,</span></span><span class="token"> </span><span
 	class="item Identifier
 	evaluated depth12"
@@ -3251,7 +3380,7 @@ data-heaptotal="0"><span class="token">filename,</span></span><span class="token
 	data-score="1"
 	data-depth="12"
 	data-type="Identifier"
-	data-rss="12288"
+	data-rss="13653.333333333332"
 	data-heapused="19690.666666666664"
 data-heaptotal="0"><span class="token">code,</span></span><span class="token"> </span><span
 	class="item Identifier
@@ -3259,7 +3388,7 @@ data-heaptotal="0"><span class="token">code,</span></span><span class="token"> <
 	data-score="1"
 	data-depth="12"
 	data-type="Identifier"
-	data-rss="15018.666666666666"
+	data-rss="12288"
 	data-heapused="19690.666666666664"
 data-heaptotal="0"><span class="token">sourceMap)</span></span><span class="token">;</span></span><span class="token"></span></span><span class="token">
 </span><span class="whitespace">
@@ -3269,8 +3398,8 @@ data-heaptotal="0"><span class="token">sourceMap)</span></span><span class="toke
 	data-score="1"
 	data-depth="12"
 	data-type="Identifier"
-	data-rss="3072"
-	data-heapused="19694.666666666668"
+	data-rss="2730.6666666666665"
+	data-heapused="19659.333333333336"
 data-heaptotal="0"><span class="token">c</span><span class="token">ode;</span></span><span class="token">
 };</span></span><span class="token"></span></span><span class="token">
 </span><span class="token">
@@ -3313,42 +3442,42 @@ data-heaptotal="0"><span class="token">f</span><span class="token">unction</span
 	data-score="1"
 	data-depth="16"
 	data-type="UnaryExpression"
-	data-rss="2230.044444444444"
-	data-heapused="25151.111111111113"
+	data-rss="1774.9333333333332"
+	data-heapused="25150.22222222223"
 data-heaptotal="0"><span class="token">!</span><span
 	class="item MemberExpression
 	evaluated depth16"
 	data-score="1"
 	data-depth="16"
 	data-type="MemberExpression"
-	data-rss="2048"
-	data-heapused="24347.022222222266"
-data-heaptotal="0"><span class="token">node.stackPath)</span></span><span class="token"></span></span><span class="token">
+	data-rss="8738.133333333335"
+	data-heapused="-35956.62222222237"
+data-heaptotal="11465.955555555556"><span class="token">node.stackPath)</span></span><span class="token"></span></span><span class="token">
 </span><span class="whitespace">		</span><span
 	class="item AssignmentExpression
 	evaluated depth16"
 	data-score="1"
 	data-depth="16"
 	data-type="AssignmentExpression"
-	data-rss="3754.6666666666665"
-	data-heapused="24585.333333333332"
+	data-rss="2048"
+	data-heapused="24557.33333333333"
 data-heaptotal="0"><span class="token">n</span><span class="token">ode.stackPath</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span
 	class="item ArrayExpression
 	evaluated depth16"
 	data-score="1"
 	data-depth="16"
 	data-type="ArrayExpression"
-	data-rss="2389.333333333333"
-	data-heapused="24324.666666666664"
+	data-rss="2389.3333333333335"
+	data-heapused="24325.333333333332"
 data-heaptotal="0"><span class="token">[</span><span
 	class="item MemberExpression
 	evaluated depth16"
 	data-score="1"
 	data-depth="16"
 	data-type="MemberExpression"
-	data-rss="54613.333333333336"
-	data-heapused="-428289.3333333332"
-data-heaptotal="85994.66666666666"><span class="token">n</span><span class="token">ode.type]</span></span><span class="token">;</span></span><span class="token"></span></span><span class="token">
+	data-rss="2048"
+	data-heapused="24391.33333333333"
+data-heaptotal="0"><span class="token">n</span><span class="token">ode.type]</span></span><span class="token">;</span></span><span class="token"></span></span><span class="token">
 </span><span class="whitespace">
 	</span><span class="token">//</span><span class="token"> </span><span class="token">Now</span><span class="token"> </span><span class="token">mark</span><span class="token"> </span><span class="token">a</span><span class="token"> </span><span class="token">path</span><span class="token"> </span><span class="token">to</span><span class="token"> </span><span class="token">the</span><span class="token"> </span><span class="token">node.</span><span class="whitespace">
 	</span><span
@@ -3357,24 +3486,24 @@ data-heaptotal="85994.66666666666"><span class="token">n</span><span class="toke
 	data-score="1"
 	data-depth="16"
 	data-type="CallExpression"
-	data-rss="1865.9555555555557"
-	data-heapused="24479.644444444457"
+	data-rss="1683.911111111111"
+	data-heapused="24484.44444444445"
 data-heaptotal="0"><span class="token">O</span><span class="token">bject.keys(</span><span
 	class="item Identifier
 	evaluated depth16"
 	data-score="1"
 	data-depth="16"
 	data-type="Identifier"
-	data-rss="1683.911111111111"
-	data-heapused="24351.20000000004"
+	data-rss="1774.9333333333332"
+	data-heapused="24352.088888888928"
 data-heaptotal="0"><span class="token">node)</span></span><span class="token">.forEach(</span><span
 	class="item FunctionExpression
 	evaluated depth16"
 	data-score="1"
 	data-depth="16"
 	data-type="FunctionExpression"
-	data-rss="1729.4222222222222"
-	data-heapused="24556.622222222224"
+	data-rss="1683.9111111111113"
+	data-heapused="24553.68888888889"
 data-heaptotal="0"><span class="token">function(nodekey)</span><span class="token"> </span><span class="token">{</span><span class="whitespace">
 		</span><span class="token">var</span><span class="token"> </span><span class="token">prop</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span
 	class="item MemberExpression
@@ -3382,8 +3511,8 @@ data-heaptotal="0"><span class="token">function(nodekey)</span><span class="toke
 	data-score="0.8"
 	data-depth="18"
 	data-type="MemberExpression"
-	data-rss="1741.72252252252"
-	data-heapused="26542.515315315304"
+	data-rss="1483.4162162162156"
+	data-heapused="26566.8324324324"
 data-heaptotal="0"><span class="token">n</span><span class="token">ode[nodekey];</span></span><span class="token">
 </span><span class="whitespace">
 		</span><span class="token">function</span><span class="token"> </span><span class="token">saveStack(prop)</span><span class="token"> </span><span class="token">{</span><span class="whitespace">
@@ -3394,72 +3523,72 @@ data-heaptotal="0"><span class="token">n</span><span class="token">ode[nodekey];
 	data-score="0.64"
 	data-depth="19"
 	data-type="UnaryExpression"
-	data-rss="1176.3068288119741"
-	data-heapused="-2047.393826005737"
-data-heaptotal="11.25537885874644"><span class="token"></span><span
+	data-rss="4364.213283442469"
+	data-heapused="-19156.11599625833"
+data-heaptotal="18590.29373246024"><span class="token"></span><span
 	class="item LogicalExpression
 	evaluated depth19"
 	data-score="0.64"
 	data-depth="19"
 	data-type="LogicalExpression"
-	data-rss="1919.6407857811043"
-	data-heapused="-5041.436856875668"
-data-heaptotal="1919.4013096351732"><span class="token"></span><span
+	data-rss="1417.6987839101957"
+	data-heapused="15494.278765200906"
+data-heaptotal="0"><span class="token"></span><span
 	class="item LogicalExpression
 	evaluated depth19"
 	data-score="0.64"
 	data-depth="19"
 	data-type="LogicalExpression"
-	data-rss="578.5743685687535"
-	data-heapused="-19703.139382600504"
-data-heaptotal="11.255378858746553"><span class="token">!</span><span
+	data-rss="1084.3479887745548"
+	data-heapused="-464.1047708139734"
+data-heaptotal="0"><span class="token">!</span><span
 	class="item Identifier
 	evaluated depth19"
 	data-score="0.64"
 	data-depth="19"
 	data-type="Identifier"
-	data-rss="2858.387277829748"
-	data-heapused="-13218.566884939031"
-data-heaptotal="8812.482694106642"><span class="token">prop</span><span class="token"> </span></span><span class="token"></span></span><span class="token">|</span><span class="token">|</span><span class="token"> </span><span
+	data-rss="2341.118802619269"
+	data-heapused="6588.86435921411"
+data-heaptotal="9766.555659494856"><span class="token">prop</span><span class="token"> </span></span><span class="token"></span></span><span class="token">|</span><span class="token">|</span><span class="token"> </span><span
 	class="item UnaryExpression
 	evaluated depth19"
 	data-score="0.64"
 	data-depth="19"
 	data-type="UnaryExpression"
-	data-rss="3032.1038961038953"
-	data-heapused="-9726.793206793256"
-data-heaptotal="17791.36063936064"><span class="token"></span><span
+	data-rss="1354.4215784215796"
+	data-heapused="-18004.45954045945"
+data-heaptotal="0"><span class="token"></span><span
 	class="item BinaryExpression
 	evaluated depth19"
 	data-score="0.64"
 	data-depth="19"
 	data-type="BinaryExpression"
-	data-rss="200.5034965034971"
-	data-heapused="-6731.188811188778"
-data-heaptotal="-2049.7902097902097"><span class="token">t</span><span class="token">ypeof</span><span class="token"> </span><span
+	data-rss="1833.1748251748265"
+	data-heapused="-8383.144855144812"
+data-heaptotal="0"><span class="token">t</span><span class="token">ypeof</span><span class="token"> </span><span
 	class="item Identifier
 	evaluated depth19"
 	data-score="0.64"
 	data-depth="19"
 	data-type="Identifier"
-	data-rss="3167.1368631368596"
-	data-heapused="17118.62537462538"
-data-heaptotal="1030.905094905095"><span class="token">p</span><span class="token">rop</span><span class="token"> </span></span><span class="token"></span></span><span class="token">!</span><span class="token">==</span><span class="token"> </span><span class="token">&quot;object&quot;</span><span class="token"> </span></span><span class="token"></span></span><span class="token">|</span><span class="token">|</span><span class="token"> </span><span
+	data-rss="-65.4705294705289"
+	data-heapused="-30748.059940059888"
+data-heaptotal="-1042.925074925075"><span class="token">p</span><span class="token">rop</span><span class="token"> </span></span><span class="token"></span></span><span class="token">!</span><span class="token">==</span><span class="token"> </span><span class="token">&quot;object&quot;</span><span class="token"> </span></span><span class="token"></span></span><span class="token">|</span><span class="token">|</span><span class="token"> </span><span
 	class="item UnaryExpression
 	evaluated depth19"
 	data-score="0.64"
 	data-depth="19"
 	data-type="UnaryExpression"
-	data-rss="2896.3799472295514"
-	data-heapused="-1393.3509234827234"
+	data-rss="1880.4854881266483"
+	data-heapused="27481.076517150537"
 data-heaptotal="0"><span class="token">!</span><span
 	class="item MemberExpression
 	evaluated depth19"
 	data-score="0.64"
 	data-depth="19"
 	data-type="MemberExpression"
-	data-rss="1977.7519788918198"
-	data-heapused="-8029.678100263704"
+	data-rss="1880.4854881266483"
+	data-heapused="27442.722955145277"
 data-heaptotal="0"><span class="token">p</span><span class="token">rop.type)</span></span><span class="token"></span></span><span class="token"></span></span><span class="token"> return;</span><span class="whitespace">
 
 			</span><span
@@ -3468,16 +3597,16 @@ data-heaptotal="0"><span class="token">p</span><span class="token">rop.type)</sp
 	data-score="0.64"
 	data-depth="19"
 	data-type="AssignmentExpression"
-	data-rss="1680.4102564102566"
-	data-heapused="28009.94871794872"
+	data-rss="1942.9743589743593"
+	data-heapused="28013.12820512821"
 data-heaptotal="0"><span class="token">p</span><span class="token">rop.stackPath</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span
 	class="item CallExpression
 	evaluated depth19"
 	data-score="0.64"
 	data-depth="19"
 	data-type="CallExpression"
-	data-rss="3570.871794871795"
-	data-heapused="-125387.3846153846"
+	data-rss="1942.9743589743591"
+	data-heapused="27904.102564102574"
 data-heaptotal="0"><span class="token">n</span><span class="token">ode.stackPath.concat(</span><span
 	class="item MemberExpression
 	evaluated depth19"
@@ -3485,7 +3614,7 @@ data-heaptotal="0"><span class="token">n</span><span class="token">ode.stackPath
 	data-depth="19"
 	data-type="MemberExpression"
 	data-rss="1837.948717948718"
-	data-heapused="27905.333333333325"
+	data-heapused="27882.76923076922"
 data-heaptotal="0"><span class="token">prop.type)</span></span><span class="token">;</span></span><span class="token"></span></span><span class="token">
 </span><span class="whitespace">		</span><span class="token">}</span><span class="whitespace">
 
@@ -3495,34 +3624,34 @@ data-heaptotal="0"><span class="token">prop.type)</span></span><span class="toke
 	data-score="0.8"
 	data-depth="18"
 	data-type="CallExpression"
-	data-rss="-1232.4900900900916"
-	data-heapused="-34545.45585585524"
-data-heaptotal="-3718.6882882882883"><span class="token">Array.isArray(</span><span
+	data-rss="1431.7549549549549"
+	data-heapused="26385.340540540823"
+data-heaptotal="0"><span class="token">Array.isArray(</span><span
 	class="item Identifier
 	evaluated depth18"
 	data-score="0.8"
 	data-depth="18"
 	data-type="Identifier"
-	data-rss="1601.499099099098"
-	data-heapused="2209.5279279280867"
-data-heaptotal="1837.664864864865"><span class="token">prop)</span></span><span class="token">)</span></span><span class="token">
+	data-rss="3977.9171171171156"
+	data-heapused="-3633.1387387387813"
+data-heaptotal="1859.3441441441441"><span class="token">prop)</span></span><span class="token">)</span></span><span class="token">
 </span><span class="whitespace">			</span><span
 	class="item CallExpression
 	evaluated depth18"
 	data-score="0.8"
 	data-depth="18"
 	data-type="CallExpression"
-	data-rss="1805.3459715639813"
-	data-heapused="26359.924170616174"
+	data-rss="1572.3981042654034"
+	data-heapused="26371.9052132702"
 data-heaptotal="0"><span class="token">p</span><span class="token">rop.forEach(</span><span
 	class="item Identifier
 	evaluated depth18"
 	data-score="0.8"
 	data-depth="18"
 	data-type="Identifier"
-	data-rss="1747.1090047393368"
-	data-heapused="-37233.63033175352"
-data-heaptotal="0"><span class="token">saveStack)</span></span><span class="token">;</span></span><span class="token">
+	data-rss="-640.6066350710898"
+	data-heapused="-27217.364928909887"
+data-heaptotal="-4833.668246445498"><span class="token">saveStack)</span></span><span class="token">;</span></span><span class="token">
 </span><span class="whitespace">
 		</span><span
 	class="item CallExpression
@@ -3530,25 +3659,25 @@ data-heaptotal="0"><span class="token">saveStack)</span></span><span class="toke
 	data-score="0.8"
 	data-depth="18"
 	data-type="CallExpression"
-	data-rss="1557.2180180180167"
-	data-heapused="26383.726126126396"
+	data-rss="1579.3585585585577"
+	data-heapused="-20086.19819819805"
 data-heaptotal="0"><span class="token"></span><span
 	class="item Identifier
 	evaluated depth18"
 	data-score="0.8"
 	data-depth="18"
 	data-type="Identifier"
-	data-rss="3542.4864864864844"
-	data-heapused="16121.354954954902"
+	data-rss="2095.9711711711707"
+	data-heapused="-19793.845045044978"
 data-heaptotal="1859.3441441441441"><span class="token">s</span><span class="token">aveStack(</span></span><span class="token"></span><span
 	class="item Identifier
 	evaluated depth18"
 	data-score="0.8"
 	data-depth="18"
 	data-type="Identifier"
-	data-rss="3572.0072072072066"
-	data-heapused="6624.908108108057"
-data-heaptotal="1859.3441441441441"><span class="token">prop)</span></span><span class="token">;</span></span><span class="token">
+	data-rss="3298.94054054054"
+	data-heapused="6629.362162162117"
+data-heaptotal="3718.6882882882883"><span class="token">prop)</span></span><span class="token">;</span></span><span class="token">
 </span><span class="whitespace">	</span><span class="token">})</span></span><span class="token">;</span></span><span class="token">
 </span><span class="whitespace">
 	</span><span class="token">var</span><span class="token"> </span><span class="token">nodeRule</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span
@@ -3557,8 +3686,8 @@ data-heaptotal="1859.3441441441441"><span class="token">prop)</span></span><span
 	data-score="1"
 	data-depth="16"
 	data-type="MemberExpression"
-	data-rss="1820.4444444444446"
-	data-heapused="24372.977777777814"
+	data-rss="1729.4222222222222"
+	data-heapused="24364.62222222226"
 data-heaptotal="0"><span class="token">n</span><span class="token">oReplaceMap[node.type];</span></span><span class="token">
 </span><span class="whitespace">
 	</span><span class="token">if</span><span class="token"> </span><span class="token">(</span><span
@@ -3567,16 +3696,16 @@ data-heaptotal="0"><span class="token">n</span><span class="token">oReplaceMap[n
 	data-score="1"
 	data-depth="16"
 	data-type="UnaryExpression"
-	data-rss="1911.466666666667"
-	data-heapused="24493.155555555586"
+	data-rss="1683.911111111111"
+	data-heapused="24490.133333333364"
 data-heaptotal="0"><span class="token">!</span><span
 	class="item Identifier
 	evaluated depth16"
 	data-score="1"
 	data-depth="16"
 	data-type="Identifier"
-	data-rss="1911.4666666666667"
-	data-heapused="24368.444444444485"
+	data-rss="5643.377777777778"
+	data-heapused="-97146.7555555556"
 data-heaptotal="0"><span class="token">nodeRule)</span></span><span class="token"></span></span><span class="token"> return;</span><span class="whitespace">
 
 	</span><span class="token">//</span><span class="token"> </span><span class="token">Convert</span><span class="token"> </span><span class="token">the</span><span class="token"> </span><span class="token">rule</span><span class="token"> </span><span class="token">to</span><span class="token"> </span><span class="token">an</span><span class="token"> </span><span class="token">array</span><span class="token"> </span><span class="token">so</span><span class="token"> </span><span class="token">we</span><span class="token"> </span><span class="token">can</span><span class="token"> </span><span class="token">handle</span><span class="token"> </span><span class="token">it</span><span class="token"> </span><span class="token">using</span><span class="whitespace">
@@ -3591,16 +3720,16 @@ data-heaptotal="0"><span class="token">nodeRule)</span></span><span class="token
 	data-score="1"
 	data-depth="16"
 	data-type="Identifier"
-	data-rss="558.5454545454545"
-	data-heapused="24458.909090909077"
+	data-rss="186.1818181818182"
+	data-heapused="24348.72727272726"
 data-heaptotal="0"><span class="token"></span><span
 	class="item BinaryExpression
 	evaluated depth16"
 	data-score="1"
 	data-depth="16"
 	data-type="BinaryExpression"
-	data-rss="372.3636363636364"
-	data-heapused="24339.63636363636"
+	data-rss="0"
+	data-heapused="24352.727272727265"
 data-heaptotal="0"><span class="token">nodeRule</span><span class="token"> </span></span><span class="token">i</span><span class="token">nstanceof</span><span class="token"> </span><span
 	class="item Identifier
 	evaluated depth16"
@@ -3608,7 +3737,7 @@ data-heaptotal="0"><span class="token">nodeRule</span><span class="token"> </spa
 	data-depth="16"
 	data-type="Identifier"
 	data-rss="186.1818181818182"
-	data-heapused="24366.18181818181"
+	data-heapused="24375.636363636357"
 data-heaptotal="0"><span class="token">S</span><span class="token">tring)</span></span><span class="token"></span></span><span class="token">
 </span><span class="whitespace">		</span><span
 	class="item AssignmentExpression
@@ -3625,23 +3754,23 @@ data-heaptotal="0"><span class="token">S</span><span class="token">tring)</span>
 	data-depth="16"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="24341.090909090894"
+	data-heapused="24407.636363636357"
 data-heaptotal="0"><span class="token"></span><span
 	class="item BinaryExpression
 	evaluated depth16"
 	data-score="1"
 	data-depth="16"
 	data-type="BinaryExpression"
-	data-rss="372.3636363636364"
-	data-heapused="24469.454545454544"
+	data-rss="0"
+	data-heapused="24477.454545454544"
 data-heaptotal="0"><span class="token">nodeRule</span><span class="token"> </span></span><span class="token">i</span><span class="token">nstanceof</span><span class="token"> </span><span
 	class="item Identifier
 	evaluated depth16"
 	data-score="1"
 	data-depth="16"
 	data-type="Identifier"
-	data-rss="372.3636363636364"
-	data-heapused="24355.63636363635"
+	data-rss="0"
+	data-heapused="24361.81818181817"
 data-heaptotal="0"><span class="token">A</span><span class="token">rray)</span></span><span class="token"></span></span><span class="token"> {</span><span class="whitespace">
 		</span><span
 	class="item CallExpression
@@ -3650,15 +3779,15 @@ data-heaptotal="0"><span class="token">A</span><span class="token">rray)</span><
 	data-depth="16"
 	data-type="CallExpression"
 	data-rss="0"
-	data-heapused="24364.4"
+	data-heapused="24382"
 data-heaptotal="0"><span class="token">n</span><span class="token">odeRule.forEach(</span><span
 	class="item FunctionExpression
 	evaluated depth16"
 	data-score="1"
 	data-depth="16"
 	data-type="FunctionExpression"
-	data-rss="0"
-	data-heapused="24343.999999999996"
+	data-rss="204.8"
+	data-heapused="24364.799999999996"
 data-heaptotal="0"><span class="token">function(property)</span><span class="token"> </span><span class="token">{</span><span class="whitespace">
 			</span><span class="token">if</span><span class="token"> </span><span class="token">(</span><span
 	class="item UnaryExpression
@@ -3666,16 +3795,16 @@ data-heaptotal="0"><span class="token">function(property)</span><span class="tok
 	data-score="0.8"
 	data-depth="18"
 	data-type="UnaryExpression"
-	data-rss="256"
-	data-heapused="26779.5"
+	data-rss="128"
+	data-heapused="26790.5"
 data-heaptotal="0"><span class="token">!</span><span
 	class="item MemberExpression
 	evaluated depth18"
 	data-score="0.8"
 	data-depth="18"
 	data-type="MemberExpression"
-	data-rss="256"
-	data-heapused="26347.75"
+	data-rss="0"
+	data-heapused="26330.75"
 data-heaptotal="0"><span class="token">node[property])</span></span><span class="token"></span></span><span class="token"> return;</span><span class="whitespace">
 
 			</span><span class="token">if</span><span class="token"> </span><span class="token">(</span><span
@@ -3685,23 +3814,23 @@ data-heaptotal="0"><span class="token">node[property])</span></span><span class=
 	data-depth="18"
 	data-type="MemberExpression"
 	data-rss="128"
-	data-heapused="26318"
+	data-heapused="26335"
 data-heaptotal="0"><span class="token"></span><span
 	class="item BinaryExpression
 	evaluated depth18"
 	data-score="0.8"
 	data-depth="18"
 	data-type="BinaryExpression"
-	data-rss="39168"
-	data-heapused="-315152"
-data-heaptotal="32248"><span class="token">node[property]</span><span class="token"> </span></span><span class="token">i</span><span class="token">nstanceof</span><span class="token"> </span><span
+	data-rss="40192"
+	data-heapused="-315296.75"
+data-heaptotal="0"><span class="token">node[property]</span><span class="token"> </span></span><span class="token">i</span><span class="token">nstanceof</span><span class="token"> </span><span
 	class="item Identifier
 	evaluated depth18"
 	data-score="0.8"
 	data-depth="18"
 	data-type="Identifier"
-	data-rss="384"
-	data-heapused="26326.25"
+	data-rss="0"
+	data-heapused="26357.75"
 data-heaptotal="0"><span class="token">A</span><span class="token">rray)</span></span><span class="token"></span></span><span class="token">
 </span><span class="whitespace">				</span><span class="token">return</span><span class="token"> </span><span
 	class="item CallExpression
@@ -3710,7 +3839,7 @@ data-heaptotal="0"><span class="token">A</span><span class="token">rray)</span><
 	data-depth="18"
 	data-type="CallExpression"
 	data-rss="0"
-	data-heapused="26363.2"
+	data-heapused="26372.8"
 data-heaptotal="0"><span class="token">n</span><span class="token">ode[property].forEach(</span><span
 	class="item FunctionExpression
 	evaluated depth18"
@@ -3718,7 +3847,7 @@ data-heaptotal="0"><span class="token">n</span><span class="token">ode[property]
 	data-depth="18"
 	data-type="FunctionExpression"
 	data-rss="0"
-	data-heapused="26384.000000000004"
+	data-heapused="26390.4"
 data-heaptotal="0"><span class="token">function(item)</span><span class="token"> </span><span class="token">{</span><span class="whitespace">
 					</span><span
 	class="item AssignmentExpression
@@ -3727,7 +3856,7 @@ data-heaptotal="0"><span class="token">function(item)</span><span class="token">
 	data-depth="20"
 	data-type="AssignmentExpression"
 	data-rss="0"
-	data-heapused="28812.800000000003"
+	data-heapused="28832"
 data-heaptotal="0"><span class="token">i</span><span class="token">tem.noReplace</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span class="token">true;</span></span><span class="token">
 </span><span class="whitespace">				</span><span class="token">})</span></span><span class="token">;</span></span><span class="token">
 </span><span class="whitespace">
@@ -3737,8 +3866,8 @@ data-heaptotal="0"><span class="token">i</span><span class="token">tem.noReplace
 	data-score="0.8"
 	data-depth="18"
 	data-type="AssignmentExpression"
-	data-rss="151.7037037037037"
-	data-heapused="26421.333333333336"
+	data-rss="0"
+	data-heapused="26372.14814814815"
 data-heaptotal="0"><span class="token">n</span><span class="token">ode[property].noReplace</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span class="token">true;</span></span><span class="token">
 </span><span class="whitespace">		</span><span class="token">})</span></span><span class="token">;</span></span><span class="token">
 </span><span class="whitespace">	</span><span class="token">}</span><span class="whitespace">
@@ -3752,24 +3881,24 @@ data-heaptotal="0"><span class="token">n</span><span class="token">ode[property]
 	data-score="1"
 	data-depth="16"
 	data-type="Identifier"
-	data-rss="372.3636363636364"
-	data-heapused="24343.99999999999"
+	data-rss="0"
+	data-heapused="24373.818181818173"
 data-heaptotal="0"><span class="token"></span><span
 	class="item BinaryExpression
 	evaluated depth16"
 	data-score="1"
 	data-depth="16"
 	data-type="BinaryExpression"
-	data-rss="186.1818181818182"
-	data-heapused="24491.636363636364"
+	data-rss="0"
+	data-heapused="24510.545454545452"
 data-heaptotal="0"><span class="token">nodeRule</span><span class="token"> </span></span><span class="token">i</span><span class="token">nstanceof</span><span class="token"> </span><span
 	class="item Identifier
 	evaluated depth16"
 	data-score="1"
 	data-depth="16"
 	data-type="Identifier"
-	data-rss="0"
-	data-heapused="24345.090909090894"
+	data-rss="744.7272727272727"
+	data-heapused="24377.454545454537"
 data-heaptotal="0"><span class="token">O</span><span class="token">bject)</span></span><span class="token"></span></span><span class="token"> {</span><span class="whitespace">
 		</span><span
 	class="item CallExpression
@@ -3777,15 +3906,15 @@ data-heaptotal="0"><span class="token">O</span><span class="token">bject)</span>
 	data-score="1"
 	data-depth="16"
 	data-type="CallExpression"
-	data-rss="186.1818181818182"
-	data-heapused="24361.090909090904"
+	data-rss="1117.0909090909092"
+	data-heapused="24399.272727272724"
 data-heaptotal="0"><span class="token">O</span><span class="token">bject.keys(</span><span
 	class="item Identifier
 	evaluated depth16"
 	data-score="1"
 	data-depth="16"
 	data-type="Identifier"
-	data-rss="186.1818181818182"
+	data-rss="1303.2727272727273"
 	data-heapused="24396.72727272727"
 data-heaptotal="0"><span class="token">nodeRule)</span></span><span class="token">.forEach(</span><span
 	class="item FunctionExpression
@@ -3793,8 +3922,8 @@ data-heaptotal="0"><span class="token">nodeRule)</span></span><span class="token
 	data-score="1"
 	data-depth="16"
 	data-type="FunctionExpression"
-	data-rss="1489.4545454545457"
-	data-heapused="24535.63636363637"
+	data-rss="1117.090909090909"
+	data-heapused="24502.181818181823"
 data-heaptotal="0"><span class="token">function(property)</span><span class="token"> </span><span class="token">{</span><span class="whitespace">
 			</span><span class="token">if</span><span class="token"> </span><span class="token">(</span><span
 	class="item UnaryExpression
@@ -3802,16 +3931,16 @@ data-heaptotal="0"><span class="token">function(property)</span><span class="tok
 	data-score="0.8"
 	data-depth="18"
 	data-type="UnaryExpression"
-	data-rss="1325.1764705882354"
-	data-heapused="26521.88235294118"
+	data-rss="722.8235294117646"
+	data-heapused="26557.176470588234"
 data-heaptotal="0"><span class="token">!</span><span
 	class="item MemberExpression
 	evaluated depth18"
 	data-score="0.8"
 	data-depth="18"
 	data-type="MemberExpression"
-	data-rss="963.7647058823529"
-	data-heapused="26324.705882352933"
+	data-rss="843.2941176470588"
+	data-heapused="26331.294117647045"
 data-heaptotal="0"><span class="token">node[property])</span></span><span class="token"></span></span><span class="token"> return;</span><span class="whitespace">
 
 			</span><span class="token">var</span><span class="token"> </span><span class="token">exclude</span><span class="token"> </span><span class="token">=</span><span class="whitespace">
@@ -3822,7 +3951,7 @@ data-heaptotal="0"><span class="token">node[property])</span></span><span class=
 	data-depth="18"
 	data-type="CallExpression"
 	data-rss="0"
-	data-heapused="26412"
+	data-heapused="26332"
 data-heaptotal="0"><span class="token">O</span><span class="token">bject</span><span class="whitespace">
 					</span><span class="token">.keys(</span><span
 	class="item MemberExpression
@@ -3831,7 +3960,7 @@ data-heaptotal="0"><span class="token">O</span><span class="token">bject</span><
 	data-depth="18"
 	data-type="MemberExpression"
 	data-rss="0"
-	data-heapused="27592"
+	data-heapused="27560"
 data-heaptotal="0"><span class="token">nodeRule[property])</span></span><span class="token">
 </span><span class="whitespace">					</span><span class="token">.reduce(</span><span
 	class="item FunctionExpression
@@ -3840,7 +3969,7 @@ data-heaptotal="0"><span class="token">nodeRule[property])</span></span><span cl
 	data-depth="18"
 	data-type="FunctionExpression"
 	data-rss="0"
-	data-heapused="26756"
+	data-heapused="26760"
 data-heaptotal="0"><span class="token">function(prev,</span><span class="token"> </span><span class="token">cur)</span><span class="token"> </span><span class="token">{</span><span class="whitespace">
 						</span><span class="token">if</span><span class="token"> </span><span class="token">(</span><span
 	class="item UnaryExpression
@@ -3849,7 +3978,7 @@ data-heaptotal="0"><span class="token">function(prev,</span><span class="token">
 	data-depth="20"
 	data-type="UnaryExpression"
 	data-rss="2048"
-	data-heapused="29668"
+	data-heapused="29652"
 data-heaptotal="0"><span class="token">!</span><span
 	class="item Identifier
 	evaluated depth20"
@@ -3857,7 +3986,7 @@ data-heaptotal="0"><span class="token">!</span><span
 	data-depth="20"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="28964"
+	data-heapused="28852"
 data-heaptotal="0"><span class="token">prev)</span></span><span class="token"></span></span><span class="token"> return</span><span class="token"> </span><span
 	class="item Identifier
 	unevaluated"><span class="token">p</span><span class="token">rev;</span></span><span class="token">
@@ -3877,7 +4006,7 @@ data-heaptotal="0"><span class="token"></span><span
 	data-depth="20"
 	data-type="MemberExpression"
 	data-rss="0"
-	data-heapused="28856"
+	data-heapused="28852"
 data-heaptotal="0"><span class="token">n</span><span class="token">ode[property][cur]</span><span class="token"> </span></span><span class="token">=</span><span class="token">==</span><span class="whitespace">
 								</span><span
 	class="item MemberExpression
@@ -3897,7 +4026,7 @@ data-heaptotal="0"><span class="token">n</span><span class="token">odeRule[prope
 	data-depth="18"
 	data-type="Identifier"
 	data-rss="0"
-	data-heapused="26544"
+	data-heapused="26512"
 data-heaptotal="0"><span class="token">exclude)</span></span><span class="token"> </span><span
 	class="item AssignmentExpression
 	evaluated depth18"
@@ -3951,7 +4080,7 @@ data-heaptotal="0"><span class="token">f</span><span class="token">unction</span
 	data-depth="17"
 	data-type="ObjectExpression"
 	data-rss="5266.285714285714"
-	data-heapused="25922.285714285714"
+	data-heapused="25913.714285714286"
 data-heaptotal="0"><span class="whitespace">{
 		</span><span class="token">&quot;type&quot;:</span><span class="token"> </span><span class="token">&quot;SequenceExpression&quot;,</span><span class="whitespace">
 		</span><span class="token">&quot;expressions&quot;:</span><span class="token"> </span><span
@@ -3960,8 +4089,8 @@ data-heaptotal="0"><span class="whitespace">{
 	data-score="1"
 	data-depth="17"
 	data-type="ArrayExpression"
-	data-rss="5266.285714285714"
-	data-heapused="25815.428571428565"
+	data-rss="6144"
+	data-heapused="25851.42857142857"
 data-heaptotal="0"><span class="whitespace">[
 			</span><span
 	class="item ObjectExpression
@@ -3969,8 +4098,8 @@ data-heaptotal="0"><span class="whitespace">[
 	data-score="1"
 	data-depth="17"
 	data-type="ObjectExpression"
-	data-rss="6144"
-	data-heapused="25827.42857142857"
+	data-rss="4973.714285714285"
+	data-heapused="25830.857142857138"
 data-heaptotal="0"><span class="whitespace">{
 				</span><span class="token">&quot;type&quot;:</span><span class="token"> </span><span class="token">&quot;CallExpression&quot;,</span><span class="whitespace">
 				</span><span class="token">&quot;callee&quot;:</span><span class="token"> </span><span
@@ -3979,8 +4108,8 @@ data-heaptotal="0"><span class="whitespace">{
 	data-score="1"
 	data-depth="17"
 	data-type="ObjectExpression"
-	data-rss="5266.285714285714"
-	data-heapused="25874.28571428571"
+	data-rss="5558.857142857143"
+	data-heapused="25838.28571428571"
 data-heaptotal="0"><span class="whitespace">{
 					</span><span class="token">&quot;type&quot;:</span><span class="token"> </span><span class="token">&quot;Identifier&quot;,</span><span class="whitespace">
 					</span><span class="token">&quot;name&quot;:</span><span class="token"> </span><span class="token">&quot;instrumentor_record&quot;</span><span class="whitespace">
@@ -3992,7 +4121,7 @@ data-heaptotal="0"><span class="whitespace">{
 	data-depth="17"
 	data-type="ArrayExpression"
 	data-rss="5266.285714285714"
-	data-heapused="25899.999999999996"
+	data-heapused="25846.857142857138"
 data-heaptotal="0"><span class="whitespace">[
 					</span><span
 	class="item ObjectExpression
@@ -4000,8 +4129,8 @@ data-heaptotal="0"><span class="whitespace">[
 	data-score="1"
 	data-depth="17"
 	data-type="ObjectExpression"
-	data-rss="5851.428571428572"
-	data-heapused="25792.000000000004"
+	data-rss="5558.857142857143"
+	data-heapused="26014.285714285714"
 data-heaptotal="0"><span class="whitespace">{
 						</span><span class="token">&quot;type&quot;:</span><span class="token"> </span><span class="token">&quot;Literal&quot;,</span><span class="whitespace">
 						</span><span class="token">&quot;value&quot;:</span><span class="token"> </span><span
@@ -4010,8 +4139,8 @@ data-heaptotal="0"><span class="whitespace">{
 	data-score="1"
 	data-depth="17"
 	data-type="Identifier"
-	data-rss="5266.285714285714"
-	data-heapused="25803.428571428565"
+	data-rss="5558.857142857142"
+	data-heapused="25798.285714285706"
 data-heaptotal="0"><span class="token">i</span><span class="token">d</span><span class="token">
 </span></span><span class="whitespace">					</span><span class="token">}</span><span class="token">
 </span></span><span class="whitespace">				</span><span class="token">]</span><span class="token">
@@ -4022,8 +4151,8 @@ data-heaptotal="0"><span class="token">i</span><span class="token">d</span><span
 	data-score="1"
 	data-depth="17"
 	data-type="Identifier"
-	data-rss="5558.857142857142"
-	data-heapused="25770.285714285714"
+	data-rss="5266.285714285714"
+	data-heapused="25763.428571428572"
 data-heaptotal="0"><span class="token">n</span><span class="token">ode</span><span class="token">
 </span></span><span class="whitespace">		</span><span class="token">]</span><span class="token">
 </span></span><span class="whitespace">	</span><span class="token">}</span><span class="token">
@@ -4077,8 +4206,8 @@ data-heaptotal="0"><span class="token">f</span><span class="token">unction</span
 	data-score="1"
 	data-depth="13"
 	data-type="CallExpression"
-	data-rss="15018.666666666666"
-	data-heapused="22997.333333333332"
+	data-rss="16384"
+	data-heapused="22880"
 data-heaptotal="0"><span class="token">c</span><span class="token">rypto.createHash(&quot;md5&quot;).update(</span><span
 	class="item Identifier
 	evaluated depth13"
@@ -4094,23 +4223,23 @@ data-heaptotal="0"><span class="token">filename)</span></span><span class="token
 	data-score="1"
 	data-depth="13"
 	data-type="ObjectExpression"
-	data-rss="15018.666666666666"
-	data-heapused="21568"
+	data-rss="13653.333333333332"
+	data-heapused="21565.333333333332"
 data-heaptotal="0"><span class="token">{ </span><span class="token">&quot;source&quot;:</span><span class="token"> </span><span
 	class="item Identifier
 	evaluated depth13"
 	data-score="1"
 	data-depth="13"
 	data-type="Identifier"
-	data-rss="15018.666666666666"
-	data-heapused="20696"
+	data-rss="13653.333333333332"
+	data-heapused="20698.666666666664"
 data-heaptotal="0"><span class="token"></span><span
 	class="item CallExpression
 	evaluated depth13"
 	data-score="1"
 	data-depth="13"
 	data-type="CallExpression"
-	data-rss="13653.333333333332"
+	data-rss="15018.666666666666"
 	data-heapused="20792"
 data-heaptotal="0"><span class="token">S</span><span class="token">tring(</span></span><span class="token"></span><span
 	class="item Identifier
@@ -4118,15 +4247,15 @@ data-heaptotal="0"><span class="token">S</span><span class="token">tring(</span>
 	data-score="1"
 	data-depth="13"
 	data-type="Identifier"
-	data-rss="15018.666666666666"
-	data-heapused="20770.666666666664"
+	data-rss="13653.333333333332"
+	data-heapused="20776"
 data-heaptotal="0"><span class="token">source)</span></span><span class="token">,</span></span><span class="token"> &quot;tag&quot;:</span><span class="token"> </span><span
 	class="item Identifier
 	evaluated depth13"
 	data-score="1"
 	data-depth="13"
 	data-type="Identifier"
-	data-rss="12288"
+	data-rss="13653.333333333332"
 	data-heapused="20786.666666666664"
 data-heaptotal="0"><span class="token">f</span><span class="token">iletag</span><span class="token"> </span></span><span class="token">}</span><span class="token">,</span></span><span class="token">
 </span><span class="whitespace">		</span><span class="token">originalSource</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span
@@ -4143,7 +4272,7 @@ data-heaptotal="0"><span class="token">J</span><span class="token">SON.stringify
 	data-score="1"
 	data-depth="13"
 	data-type="Identifier"
-	data-rss="13653.333333333332"
+	data-rss="12288"
 	data-heapused="20770.666666666664"
 data-heaptotal="0"><span class="token">sourceObject)</span></span><span class="token">,</span></span><span class="token">
 </span><span class="whitespace">		</span><span class="token">sourceKey</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span
@@ -4152,7 +4281,7 @@ data-heaptotal="0"><span class="token">sourceObject)</span></span><span class="t
 	data-score="1"
 	data-depth="13"
 	data-type="CallExpression"
-	data-rss="15018.666666666666"
+	data-rss="16384"
 	data-heapused="21770.666666666664"
 data-heaptotal="0"><span class="token">J</span><span class="token">SON.stringify(</span><span
 	class="item BinaryExpression
@@ -4161,15 +4290,15 @@ data-heaptotal="0"><span class="token">J</span><span class="token">SON.stringify
 	data-depth="13"
 	data-type="BinaryExpression"
 	data-rss="12288"
-	data-heapused="20698.666666666664"
+	data-heapused="20701.333333333332"
 data-heaptotal="0"><span class="token">&quot;source_&quot;</span><span class="token"> </span><span class="token">+</span><span class="token"> </span><span
 	class="item Identifier
 	evaluated depth13"
 	data-score="1"
 	data-depth="13"
 	data-type="Identifier"
-	data-rss="13653.333333333332"
-	data-heapused="20698.666666666664"
+	data-rss="12288"
+	data-heapused="20864"
 data-heaptotal="0"><span class="token">f</span><span class="token">ilename)</span></span><span class="token"></span></span><span class="token">;</span></span><span class="token">
 </span><span class="whitespace">
 	</span><span class="token">var</span><span class="token"> </span><span class="token">initialiser</span><span class="token"> </span><span class="token">=</span><span class="whitespace">
@@ -4179,7 +4308,7 @@ data-heaptotal="0"><span class="token">f</span><span class="token">ilename)</spa
 	data-score="1"
 	data-depth="13"
 	data-type="BinaryExpression"
-	data-rss="12288"
+	data-rss="13653.333333333332"
 	data-heapused="20666.666666666664"
 data-heaptotal="0"><span class="token"></span><span
 	class="item BinaryExpression
@@ -4236,7 +4365,7 @@ data-heaptotal="0"><span class="token"></span><span
 	data-depth="13"
 	data-type="BinaryExpression"
 	data-rss="13653.333333333332"
-	data-heapused="20698.666666666664"
+	data-heapused="20706.666666666664"
 data-heaptotal="0"><span class="token"></span><span
 	class="item BinaryExpression
 	evaluated depth13"
@@ -4244,22 +4373,22 @@ data-heaptotal="0"><span class="token"></span><span
 	data-depth="13"
 	data-type="BinaryExpression"
 	data-rss="13653.333333333332"
-	data-heapused="21437.333333333332"
+	data-heapused="20701.333333333332"
 data-heaptotal="0"><span class="token"></span><span
 	class="item BinaryExpression
 	evaluated depth13"
 	data-score="1"
 	data-depth="13"
 	data-type="BinaryExpression"
-	data-rss="16384"
-	data-heapused="20664"
+	data-rss="12288"
+	data-heapused="20666.666666666664"
 data-heaptotal="0"><span class="token"></span><span
 	class="item BinaryExpression
 	evaluated depth13"
 	data-score="1"
 	data-depth="13"
 	data-type="BinaryExpression"
-	data-rss="13653.333333333332"
+	data-rss="15018.666666666666"
 	data-heapused="20994.666666666664"
 data-heaptotal="0"><span class="token">&quot;</span><span class="token">if</span><span class="token"> </span><span class="token">(typeof</span><span class="token"> </span><span class="token">__instrumentor_map__</span><span class="token"> </span><span class="token">===</span><span class="token"> </span><span class="token">'undefined')</span><span class="token"> </span><span class="token">{&quot;</span><span class="token"> </span><span class="token">+</span><span class="whitespace">
 			</span><span class="token">&quot;__instrumentor_map__</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span class="token">{};&quot;</span><span class="token"> </span></span><span class="whitespace">+
@@ -4270,7 +4399,7 @@ data-heaptotal="0"><span class="token">&quot;</span><span class="token">if</span
 	data-score="1"
 	data-depth="13"
 	data-type="Identifier"
-	data-rss="16384"
+	data-rss="13653.333333333332"
 	data-heapused="20818.666666666664"
 data-heaptotal="0"><span class="token">s</span><span class="token">ourceKey</span><span class="token"> </span></span><span class="token"></span></span><span class="token">+ </span><span class="token">&quot;])</span><span class="token"> </span><span class="token">{&quot;</span><span class="token"> </span></span><span class="whitespace">+
 			</span><span class="token">&quot;__instrumentor_map__[&quot;</span><span class="token"> </span></span><span class="token">+ </span><span
@@ -4279,15 +4408,15 @@ data-heaptotal="0"><span class="token">s</span><span class="token">ourceKey</spa
 	data-score="1"
 	data-depth="13"
 	data-type="Identifier"
-	data-rss="13653.333333333332"
-	data-heapused="20818.666666666664"
+	data-rss="15018.666666666666"
+	data-heapused="20821.333333333332"
 data-heaptotal="0"><span class="token">s</span><span class="token">ourceKey</span><span class="token"> </span></span><span class="token"></span></span><span class="token">+ </span><span class="token">&quot;]</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span class="token">&quot;</span><span class="token"> </span></span><span class="token">+ </span><span
 	class="item Identifier
 	evaluated depth13"
 	data-score="1"
 	data-depth="13"
 	data-type="Identifier"
-	data-rss="12288"
+	data-rss="13653.333333333332"
 	data-heapused="20778.666666666664"
 data-heaptotal="0"><span class="token">o</span><span class="token">riginalSource</span><span class="token"> </span></span><span class="token"></span></span><span class="token">+ </span><span class="token">&quot;;&quot;+</span></span><span class="token">
 </span><span class="whitespace">		</span><span class="token">&quot;}\n&quot;;</span></span><span class="token">
@@ -4306,7 +4435,7 @@ data-heaptotal="0"><span class="token">O</span><span class="token">bject.keys(</
 	data-score="1"
 	data-depth="13"
 	data-type="Identifier"
-	data-rss="12288"
+	data-rss="13653.333333333332"
 	data-heapused="20746.666666666664"
 data-heaptotal="0"><span class="token">sourceMap)</span></span><span class="token">.forEach(</span><span
 	class="item FunctionExpression
@@ -4315,7 +4444,7 @@ data-heaptotal="0"><span class="token">sourceMap)</span></span><span class="toke
 	data-depth="13"
 	data-type="FunctionExpression"
 	data-rss="13653.333333333332"
-	data-heapused="20936"
+	data-heapused="20917.333333333332"
 data-heaptotal="0"><span class="token">function(key)</span><span class="token"> </span><span class="token">{</span><span class="whitespace">
 		</span><span
 	class="item AssignmentExpression
@@ -4323,50 +4452,10 @@ data-heaptotal="0"><span class="token">function(key)</span><span class="token"> 
 	data-score="1"
 	data-depth="15"
 	data-type="AssignmentExpression"
-	data-rss="18432"
-	data-heapused="24072"
+	data-rss="17408"
+	data-heapused="24088"
 data-heaptotal="0"><span class="token">i</span><span class="token">nitialiser</span><span class="token"> </span><span class="token">+=</span><span class="whitespace">
 			</span><span
-	class="item BinaryExpression
-	evaluated depth15"
-	data-score="1"
-	data-depth="15"
-	data-type="BinaryExpression"
-	data-rss="15360"
-	data-heapused="21918"
-data-heaptotal="0"><span class="token"></span><span
-	class="item BinaryExpression
-	evaluated depth15"
-	data-score="1"
-	data-depth="15"
-	data-type="BinaryExpression"
-	data-rss="15360"
-	data-heapused="21922"
-data-heaptotal="0"><span class="token"></span><span
-	class="item BinaryExpression
-	evaluated depth15"
-	data-score="1"
-	data-depth="15"
-	data-type="BinaryExpression"
-	data-rss="15360"
-	data-heapused="21918"
-data-heaptotal="0"><span class="token"></span><span
-	class="item BinaryExpression
-	evaluated depth15"
-	data-score="1"
-	data-depth="15"
-	data-type="BinaryExpression"
-	data-rss="18432"
-	data-heapused="21918"
-data-heaptotal="0"><span class="token"></span><span
-	class="item BinaryExpression
-	evaluated depth15"
-	data-score="1"
-	data-depth="15"
-	data-type="BinaryExpression"
-	data-rss="15360"
-	data-heapused="21918"
-data-heaptotal="0"><span class="token"></span><span
 	class="item BinaryExpression
 	evaluated depth15"
 	data-score="1"
@@ -4380,7 +4469,47 @@ data-heaptotal="0"><span class="token"></span><span
 	data-score="1"
 	data-depth="15"
 	data-type="BinaryExpression"
-	data-rss="18432"
+	data-rss="16384"
+	data-heapused="21920"
+data-heaptotal="0"><span class="token"></span><span
+	class="item BinaryExpression
+	evaluated depth15"
+	data-score="1"
+	data-depth="15"
+	data-type="BinaryExpression"
+	data-rss="15360"
+	data-heapused="21958"
+data-heaptotal="0"><span class="token"></span><span
+	class="item BinaryExpression
+	evaluated depth15"
+	data-score="1"
+	data-depth="15"
+	data-type="BinaryExpression"
+	data-rss="17408"
+	data-heapused="21920"
+data-heaptotal="0"><span class="token"></span><span
+	class="item BinaryExpression
+	evaluated depth15"
+	data-score="1"
+	data-depth="15"
+	data-type="BinaryExpression"
+	data-rss="16384"
+	data-heapused="21918"
+data-heaptotal="0"><span class="token"></span><span
+	class="item BinaryExpression
+	evaluated depth15"
+	data-score="1"
+	data-depth="15"
+	data-type="BinaryExpression"
+	data-rss="15360"
+	data-heapused="21918"
+data-heaptotal="0"><span class="token"></span><span
+	class="item BinaryExpression
+	evaluated depth15"
+	data-score="1"
+	data-depth="15"
+	data-type="BinaryExpression"
+	data-rss="15360"
 	data-heapused="21922"
 data-heaptotal="0"><span class="token">&quot;</span><span class="token">if</span><span class="token"> </span><span class="token">(!__instrumentor_map__.&quot;</span><span class="token"> </span><span class="token">+</span><span class="token"> </span><span
 	class="item Identifier
@@ -4397,8 +4526,8 @@ data-heaptotal="0"><span class="token">k</span><span class="token">ey</span><spa
 	data-score="1"
 	data-depth="15"
 	data-type="Identifier"
-	data-rss="15360"
-	data-heapused="22068"
+	data-rss="16384"
+	data-heapused="22062"
 data-heaptotal="0"><span class="token">k</span><span class="token">ey</span><span class="token"> </span></span><span class="token"></span></span><span class="token">+ </span><span class="token">&quot;</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span class="token">&quot;</span><span class="whitespace">	</span></span><span class="whitespace">+
 							</span><span
 	class="item CallExpression
@@ -4414,8 +4543,8 @@ data-heaptotal="0"><span class="token">J</span><span class="token">SON.stringify
 	data-score="1"
 	data-depth="15"
 	data-type="MemberExpression"
-	data-rss="17408"
-	data-heapused="21998"
+	data-rss="16384"
+	data-heapused="21996"
 data-heaptotal="0"><span class="token">sourceMap[key])</span></span><span class="whitespace">	</span></span><span class="token"></span></span><span class="token">+</span><span class="whitespace">
 			</span><span class="token">&quot;;}\n&quot;;</span></span><span class="token"></span></span><span class="token">
 </span><span class="whitespace">	</span><span class="token">})</span></span><span class="token">;</span></span><span class="token">
@@ -4427,14 +4556,14 @@ data-heaptotal="0"><span class="token">sourceMap[key])</span></span><span class=
 	data-depth="13"
 	data-type="AssignmentExpression"
 	data-rss="16384"
-	data-heapused="25805.333333333332"
+	data-heapused="25042.666666666664"
 data-heaptotal="0"><span class="token">i</span><span class="token">nitialiser</span><span class="token"> </span><span class="token">+=</span><span class="token"> </span><span
 	class="item BinaryExpression
 	evaluated depth13"
 	data-score="1"
 	data-depth="13"
 	data-type="BinaryExpression"
-	data-rss="15018.666666666666"
+	data-rss="13653.333333333332"
 	data-heapused="20698.666666666664"
 data-heaptotal="0"><span class="token"></span><span
 	class="item BinaryExpression
@@ -4443,14 +4572,14 @@ data-heaptotal="0"><span class="token"></span><span
 	data-depth="13"
 	data-type="BinaryExpression"
 	data-rss="13653.333333333332"
-	data-heapused="20696"
+	data-heapused="20698.666666666664"
 data-heaptotal="0"><span class="token">&quot;</span><span class="token">\n&quot;</span><span class="token"> </span><span class="token">+</span><span class="token"> </span><span
 	class="item CallExpression
 	evaluated depth13"
 	data-score="1"
 	data-depth="13"
 	data-type="CallExpression"
-	data-rss="13653.333333333332"
+	data-rss="15018.666666666666"
 	data-heapused="20698.666666666664"
 data-heaptotal="0"><span class="token"></span><span
 	class="item Identifier
@@ -4469,22 +4598,22 @@ data-heaptotal="0"><span class="token">r</span><span class="token">equire(</span
 	data-depth="13"
 	data-type="Identifier"
 	data-rss="13653.333333333332"
-	data-heapused="20698.666666666664"
+	data-heapused="20696"
 data-heaptotal="0"><span class="token"></span><span
 	class="item BinaryExpression
 	evaluated depth13"
 	data-score="1"
 	data-depth="13"
 	data-type="BinaryExpression"
-	data-rss="19114.666666666664"
-	data-heapused="28490.666666666664"
+	data-rss="17749.333333333332"
+	data-heapused="28546.666666666664"
 data-heaptotal="0"><span class="token">i</span><span class="token">nitialiser</span><span class="token"> </span></span><span class="token">+ </span><span
 	class="item Identifier
 	evaluated depth13"
 	data-score="1"
 	data-depth="13"
 	data-type="Identifier"
-	data-rss="13653.333333333332"
+	data-rss="15018.666666666666"
 	data-heapused="20698.666666666664"
 data-heaptotal="0"><span class="token">c</span><span class="token">ode;</span></span><span class="token"></span></span><span class="token">
 };</span></span><span class="token"></span></span></pre></div><div id="9fd67206eee7d1e1ff188470142cb00f" class="file"><header class="fileHeader"><h2>lib/instrumentor-config.js</h2><table class="statRundown"><thead><tr><th>Kind</th><th>Covered</th><th>Total</th><th>Percentage</th></tr></thead><tbody><tr><th>lines</th><td>0.04533</td><td>38</td><td>0.11%</td></tr><tr><th>conditions</th><td>0</td><td>0</td><td>0%</td></tr><tr><th>expressions</th><td>0.04835</td><td>16</td><td>0.3%</td></tr><tr><th>functions</th><td>0</td><td>0</td><td>0%</td></tr></tbody></table></header><pre><span class="token">&quot;use</span><span class="token"> </span><span class="token">strict&quot;;</span><span class="whitespace">
@@ -4641,7 +4770,7 @@ data-heaptotal="0"><span class="token">[</span><span class="token">&quot;key&quo
 	data-score="0.0030223145490365726"
 	data-depth="43"
 	data-type="ArrayExpression"
-	data-rss="57344"
+	data-rss="53248"
 	data-heapused="51992"
 data-heaptotal="0"><span class="token">[</span><span class="token">&quot;param&quot;],</span></span><span class="token">
 </span><span class="whitespace">
@@ -4682,7 +4811,7 @@ data-heaptotal="0"><span class="whitespace">{
 	data-score="0.0030223145490365726"
 	data-depth="43"
 	data-type="Identifier"
-	data-rss="53248"
+	data-rss="57344"
 	data-heapused="52184"
 data-heaptotal="0"><span class="token">n</span><span class="token">oReplaceMap,</span></span><span class="token">
 </span><span class="whitespace">	</span><span class="token">allowedReplacements:</span><span class="token"> </span><span
@@ -4710,7 +4839,7 @@ data-heaptotal="0"><span class="token"></span><span
 	data-score="0.014411518807585587"
 	data-depth="36"
 	data-type="CallExpression"
-	data-rss="614400"
+	data-rss="512000"
 	data-heapused="513248"
 data-heaptotal="0"><span class="token">r</span><span class="token">equire(</span></span><span class="token">&quot;fs&quot;),</span></span><span class="token">
 </span><span class="whitespace">	</span><span class="token">path</span><span class="token"> </span><span class="token">=</span><span class="token"> </span><span
@@ -5244,7 +5373,7 @@ data-heaptotal="0"><span class="token">f</span><span class="token">unction</span
 	</span><span class="token">return</span><span class="token"> </span><span
 	class="item Identifier
 	unevaluated"><span class="token">e</span><span class="token">mitter;</span></span><span class="token">
-};</span></span><span class="token"></span></span></pre></div></main><script>(function() {
+};</span></span><span class="token"></span></span></pre></div></main></div><script>(function() {
 	window.addEventListener("load", function() {
 
 		var scoreClasses = [
@@ -5315,6 +5444,16 @@ data-heaptotal="0"><span class="token">f</span><span class="token">unction</span
 		[].slice.call(document.querySelectorAll(".unevaluated"))
 			.forEach(function(item) {
 				item.title = "WARNING: This code was never evaluated.";
+			});
+
+		[].slice.call(document.querySelectorAll("li.file"))
+			.forEach(function(item) {
+				var score = (
+						(item.dataset.coverage / 100) *
+						(scoreClasses.length - 1) | 0),
+					scoreClass = scoreClasses[score];
+
+				item.classList.add(scoreClass);
 			});
 
 	}, false);
