@@ -70,6 +70,10 @@ you might want to record! The sky is the limit.
 **Seen here: SteamShovel's recorded memory data from a test run, visualised in,
 uh... Numbers.app**
 
+See also: [Stack depth of calls over time](https://files.app.net/2p5qdpjOu.png),
+[Call latency over run-time of test suite](https://files.app.net/2p5qbErUo.png)
+— you're only limited by your imagination here.
+
 ### Caveat
 
 Because SteamShovel records so much more from your code, it does have a
