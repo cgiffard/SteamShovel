@@ -60,7 +60,7 @@ SteamShovel can do a whole lot more, too:
 * SteamShovel can now auto-instrument your code as you require it! Simply set
   the `AUTO_INSTRUMENT` environment variable to `true` before running the
   SteamShovel reporter. Remember that this won't instrument code that isn't
-  required, so 
+  required, so the manual instrumentor may be more accurate in some cases.
 
 You can override the SteamShovel instrumentor with your own, and record anything
 you might want to record! The sky is the limit.
