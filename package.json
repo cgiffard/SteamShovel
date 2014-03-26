@@ -13,7 +13,9 @@
     "jade": "~1.3.0"
   },
   "repository": "https://github.com/cgiffard/SteamShovel.git",
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "~1.9.1"
+  },
   "scripts": {
     "test": "./node_modules/.bin/mocha -R spec test",
     "coverage": "make coverage"
