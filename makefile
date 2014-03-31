@@ -1,4 +1,4 @@
-all: coverage
+all: instrument report memdump file restore
 
 cover: coverage
 
@@ -16,8 +16,14 @@ report: instrument
 file: report
 	mkdir -p ./reports
 	cp report.html "./reports/$(shell date).html"
+	cp report.csv "./reports/$(shell date).csv"
 
 # Restore the lib folder to its original location
 clean: restore
 restore:
 	rm -rfv lib-cov
+
+# Memory instrumentation
+memory: memdump restore
+memdump: instrument
+	REPORTER_OUTPUT=csv ./node_modules/.bin/mocha -R $(shell pwd)/lib/reporter.js
