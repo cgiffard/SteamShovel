@@ -1,6 +1,6 @@
 html {
 	font-size: 66.67%;
-	font-family: sans-serif;
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
 	tab-size: 4;
 }
 
@@ -23,7 +23,6 @@ div.body {
 
 h1 {
 	font-size: 4em;
-	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
 	font-weight: 100;
 	padding-bottom: 0.4em;
 	border-bottom: solid #CCC 1px;
@@ -208,37 +207,53 @@ li a {
 /* Tokens */
 .evaluated.perfect > .token, .key-item.perfect {
 	background-color: hsl(125, 100%, 70%);
+	color: black;
+	font-weight: normal;
 }
 
 .evaluated.great > .token, .key-item.great {
 	background-color: hsl(115, 100%, 70%);
+	color: black;
+	font-weight: normal;
 }
 
 .evaluated.good > .token, .key-item.good {
 	background-color: hsl(100, 100%, 70%);
+	color: black;
+	font-weight: normal;
 }
 
 .evaluated.average > .token, .key-item.average {
 	background-color: hsl(80, 100%, 70%);
+	color: black;
+	font-weight: normal;
 }
 
 .evaluated.poor > .token, .key-item.poor {
 	background-color: hsl(60, 100%, 70%);
+	color: black;
+	font-weight: normal;
 }
 
 .evaluated.worse > .token, .key-item.worse {
 	background-color: hsl(40, 100%, 70%);
+	color: black;
+	font-weight: normal;
 }
 
 .evaluated.abysmal > .token, .key-item.abysmal {
 	background-color: hsl(20, 100%, 70%);
+	color: black;
+	font-weight: normal;
 }
 
 .evaluated.you-should-be-ashamed > .token, .key-item.you-should-be-ashamed {
 	background-color: hsl(0, 100%, 70%);
+	color: black;
+	font-weight: normal;
 }
 
-.unevaluated, .key-item.unevaluated {
+.unevaluated > .token, .key-item.unevaluated {
 	background-color: #CCC;
 	color: red;
 	font-weight: bold;
