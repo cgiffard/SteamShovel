@@ -28,9 +28,12 @@ mixin file(file)
 						span.token=item
 				else
 					if (item.open && item.open.results.length)
+						-var score = (item.open.score) * (classes.length-1) | 0;
+						-var coverageStyle = classes[score];
 						| <span
 						| 	class="item #{item.open.type}
-						|	evaluated depth#{item.open.depth}"
+						|	evaluated depth#{item.open.depth}
+						|	#{coverageStyle}"
 						|	data-score="#{item.open.score}"
 						|	data-depth="#{item.open.depth}"
 						|	data-type="#{item.open.type}"
@@ -49,7 +52,11 @@ mixin sidebar(files)
 		nav: ul
 			each file, index in files
 				- var expressions = file.stats.expressions;
-				li(class="file", data-coverage=expressions.percentage)
+				- var score = (expressions.percentage/100)*(classes.length-1)|0;
+
+				li(	class="file " + classes[score],
+					data-coverage=expressions.percentage)
+
 					a(href="#"+file.key)
 						span.coverage= expressions.percentage|0
 						span.filename!= file.filename.replace(/\//ig,"/&shy;")
@@ -58,6 +65,21 @@ mixin main(files)
 	main
 		each file, key in files
 			+file(file)
+
+mixin guide
+	#guide
+		h3 Key
+		p
+			| SteamShovel uses the stack depth to determine how
+			| directly code was tested. Code which was not tested
+			| directly is not considered highly in the coverage
+			| output.
+		.items
+			for classN in classes
+				-classR = classN[0].toUpperCase() + classN.substr(1)
+				span(class="key-item " + classN)= classR
+			span.key-item.unevaluated Unevaluated
+
 
 doctype html
 html(lang=en)
@@ -72,13 +94,7 @@ html(lang=en)
 			header.docHeader
 				h1 Coverage Report
 				+stats(stats)
-				div#guide
-					h3 Key
-					p
-						| SteamShovel uses the stack depth to determine how
-						| directly code was tested. Code which was not tested
-						| directly is not considered highly in the coverage
-						| output.
+				+guide()
 			+main(files)
 
 		script!= script

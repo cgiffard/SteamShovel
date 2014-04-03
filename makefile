@@ -1,8 +1,14 @@
-all: instrument report memdump file restore
+all: install test instrument report memdump file restore
+
+install:
+	npm install
+
+test: install
+	./node_modules/.bin/mocha -R spec
 
 cover: coverage
 
-coverage: instrument report file restore
+coverage: test instrument report file restore
 
 # Instrument the code
 instrument:
