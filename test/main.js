@@ -60,7 +60,7 @@ describe("Instrumentor", function() {
 			function() {
 
 			instrument("var abc = def;", null, false)
-				.indexOf("var abc").should.equal(0);
+				.indexOf("var abc = ").should.be.greaterThan(-1);
 		});
 
 		it("should not instrument the components of MemberExpressions",

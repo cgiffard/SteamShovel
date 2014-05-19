@@ -84,7 +84,7 @@ considerable performance impact. However, the accuracy of your test coverage
 data should be more important than how quickly it runs.
 
 Also, (if you couldn't tell already!) SteamShovel is early in its development.
-Be careful: there will be bugs.
+Be careful: there will be an excruciating number of bugs.
 
 ### Todo
 

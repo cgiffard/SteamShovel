@@ -14,7 +14,8 @@
   },
   "repository": "https://github.com/cgiffard/SteamShovel.git",
   "devDependencies": {
-    "chai": "~1.9.1"
+    "chai": "~1.9.1",
+    "jshint": "^2.5.1"
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha -R spec test",

@@ -31,15 +31,10 @@ mixin file(file)
 						-var score = (item.open.score) * (classes.length-1) | 0;
 						-var coverageStyle = classes[score];
 						| <span
+						|	id="#{key}"
 						| 	class="item #{item.open.type}
 						|	evaluated depth#{item.open.depth}
-						|	#{coverageStyle}"
-						|	data-score="#{item.open.score}"
-						|	data-depth="#{item.open.depth}"
-						|	data-type="#{item.open.type}"
-						|	data-rss="#{item.open.avgMemChanges.rss}"
-						|	data-heapused="#{item.open.avgMemChanges.heapUsed}"
-						| data-heaptotal="#{item.open.avgMemChanges.heapTotal}">
+						|	#{coverageStyle}">
 					if (item.open && !item.open.results.length)
 						| <span
 						|	class="item #{item.open.type}
@@ -97,6 +92,5 @@ html(lang=en)
 				+guide()
 			+main(files)
 
+		script!= "var fileData = " + JSON.stringify(files)
 		script!= script
-
-
