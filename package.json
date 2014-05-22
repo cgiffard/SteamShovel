@@ -1,6 +1,6 @@
 {
   "name": "steamshovel",
-  "version": "0.1.0a2",
+  "version": "0.1.0a3",
   "description": "Code Coverage Done Right!",
   "main": "lib/index.js",
   "dependencies": {
